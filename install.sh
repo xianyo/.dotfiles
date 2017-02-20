@@ -75,6 +75,7 @@ lnif "$CURRENT_DIR/spacemacs.d" "$HOME/.spacemacs.d"
 
 echo "Install Spacemacs"
 if [ ! -f $HOME/.emacs.d/spacemacs.mk ]; then
+    mv $HOME/.emacs.d $HOME/.emacs.d_bak >&/dev/null
     echo "Cloneing Spacemacs"
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 else

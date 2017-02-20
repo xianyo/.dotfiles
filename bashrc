@@ -26,42 +26,42 @@ function setjdk(){
         #echo "set jdk6"
         if [ ! -d /usr/lib/jvm/java-6-oracle ]; then
             #echo "no jdk6"
-            exit;
+            return;
         fi
         export JAVA_HOME=/usr/lib/jvm/java-6-oracle
     elif [ $1 == "jdk7" ]; then
         #echo "set jdk7"
         if [ ! -d /usr/lib/jvm/java-7-oracle ]; then
             #echo "no jdk7"
-            exit;
+            return;
         fi
         export JAVA_HOME=/usr/lib/jvm/java-7-oracle
     elif [ $1 == "jdk8" ]; then
         #echo "set jdk8"
         if [ ! -d /usr/lib/jvm/java-8-oracle ]; then
             #echo "no jdk8"
-            exit;
+            return;
         fi
         export JAVA_HOME=/usr/lib/jvm/java-8-oracle
     elif [ $1 == "openjdk6" ]; then
         #echo "set openjdk6"
         if [ ! -d /usr/lib/jvm/java-6-openjdk-amd64 ]; then
             #echo "no openjdk6"
-            exit;
+            return;
         fi
         export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-amd64
     elif [ $1 == "openjdk7" ]; then
         #echo "set openjdk7"
         if [ ! -d /usr/lib/jvm/java-7-openjdk-amd64 ]; then
             #echo "no openjdk7"
-            exit;
+            return;
         fi
         export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
     elif [ $1 == "openjdk8" ]; then
         #echo "set openjdk8"
         if [ ! -d /usr/lib/jvm/java-8-openjdk-amd64 ]; then
             #echo "no openjdk8"
-            exit;
+            return;
         fi
         export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
     fi
@@ -84,6 +84,9 @@ fi
 export TERM=xterm-256color                                                               
 export USE_CCACHE=1 
 
+USE_TRACKPOINT=0
+
+if [ $USE_TRACKPOINT = 1 ]; then
 
 # obtain TrackPoint ID from xinput list
 TP_ID=$(xinput list | grep TrackPoint | cut -f 2 | grep -Eo '[0-9]{1,}')
@@ -93,4 +96,6 @@ if [ -n "$TP_ID" ]; then
     AS_ID=$(xinput list-props "$TP_ID" | grep 'Accel Constant Deceleration (' | cut -f 2 | grep -Eo '[0-9]{1,}')
     # set the speed you want
     xinput set-prop "$TP_ID" "$AS_ID" 0.20 
+fi
+
 fi
