@@ -6,6 +6,7 @@
 alias emacsd='emacs --daemon'
 alias e='emacsclient -t'
 alias ec='emacsclient -c'
+alias duf='du -sh'
  
 # run emacs daemon
 #[[ -z $(ps -C 'emacs --daemon' -o pid=) ]] && emacsd >&/dev/null
@@ -83,19 +84,26 @@ fi
 
 export TERM=xterm-256color                                                               
 export USE_CCACHE=1 
+export CCACHE_DIR=~/hdd/.ccache
+
+function setccache(){
+	prebuilts/misc/linux-x86/ccache/ccache -M 50G
+}
+
+function settackpoint(){
+	# obtain TrackPoint ID from xinput list
+	TP_ID=$(xinput list | grep TrackPoint | cut -f 2 | grep -Eo '[0-9]{1,}')
+
+	if [ -n "$TP_ID" ]; then
+	    # obtain properties from xinput list-props "$TP_ID"
+	    AS_ID=$(xinput list-props "$TP_ID" | grep 'Accel Constant Deceleration (' | cut -f 2 | grep -Eo '[0-9]{1,}')
+	    # set the speed you want
+	    xinput set-prop "$TP_ID" "$AS_ID" 0.20 
+	fi
+}
 
 USE_TRACKPOINT=0
 
 if [ $USE_TRACKPOINT = 1 ]; then
-
-# obtain TrackPoint ID from xinput list
-TP_ID=$(xinput list | grep TrackPoint | cut -f 2 | grep -Eo '[0-9]{1,}')
-
-if [ -n "$TP_ID" ]; then
-    # obtain properties from xinput list-props "$TP_ID"
-    AS_ID=$(xinput list-props "$TP_ID" | grep 'Accel Constant Deceleration (' | cut -f 2 | grep -Eo '[0-9]{1,}')
-    # set the speed you want
-    xinput set-prop "$TP_ID" "$AS_ID" 0.20 
-fi
-
+	settackpoint
 fi
