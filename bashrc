@@ -76,15 +76,23 @@ function setjdk(){
 setjdk jdk8
 
 #android
-if [ -d /home/zhuxy/soft/Android/sdk ]; then
-    export ANDROID_SDK_HOME=/home/zhuxy/soft/Android/sdk
+if [ -d ${HOME}/soft/Android/sdk ]; then
+    export ANDROID_SDK_HOME=${HOME}/soft/Android/sdk
     export NDK_HOME=${ANDROID_SDK_HOME}/ndk-bundle
     export PATH=${ANDROID_SDK_HOME}/platform-tools:${ANDROID_SDK_HOME}/tools:${NDK_HOME}:$PATH
 fi
 
+#emacs
+if [ -d ${HOME}/soft/emacs/bin ]; then
+    export PATH=${HOME}/soft/emacs/bin:$PATH
+fi
+
 export TERM=xterm-256color                                                               
 export USE_CCACHE=1 
-export CCACHE_DIR=~/hdd/.ccache
+
+if [ -d ${HOME}/hdd/.ccache ]; then
+    export CCACHE_DIR=~/hdd/.ccache
+fi
 
 function setccache(){
 	prebuilts/misc/linux-x86/ccache/ccache -M 50G
