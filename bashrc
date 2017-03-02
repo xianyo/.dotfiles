@@ -107,3 +107,5 @@ USE_TRACKPOINT=0
 if [ $USE_TRACKPOINT = 1 ]; then
 	settackpoint
 fi
+
+export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'
