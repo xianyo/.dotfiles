@@ -297,8 +297,6 @@ set formatoptions+=B
 autocmd! bufwritepost _vimrc source % " vimrc文件修改之后自动加载。 windows。
 autocmd! bufwritepost .vimrc source % " vimrc文件修改之后自动加载。 linux。
 
-"共享剪贴板  
-set clipboard+=unnamed
 
 " 自动补全配置
 "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
@@ -580,6 +578,19 @@ function! AutoSetFileHead()
     normal o
     normal o
 endfunc
+
+"""""复制粘贴
+vmap <C-c> "+y
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <C-r><C-o>+
+nmap <C-v> "+p
+
+"共享剪贴板  
+set clipboard=unnamedplus
+
+autocmd VimLeave * call system("echo -n $'" . escape(getreg(), "'") . "' | xsel -ib")
+
 
 "==========================================
 " Theme Settings  主题设置
