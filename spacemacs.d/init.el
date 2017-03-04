@@ -49,7 +49,7 @@ values."
      better-defaults
      emacs-lisp
      prodigy
-     ;; search-engine
+     search-engine
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
      ranger
      git
@@ -388,7 +388,8 @@ you should place your code here."
 		 '(company-tooltip-common
 		   ((t (:inherit company-tooltip :weight bold :underline nil))))
 		 '(company-tooltip-common-selection
-		   ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+		   ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))  
+
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
