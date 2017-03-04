@@ -429,6 +429,16 @@ you should place your code here."
         ;; http://shreevatsa.wordpress.com/2006/10/22/emacs-copypaste-and-x/
         ;; http://www.mail-archive.com/help-gnu-emacs@gnu.org/msg03577.html
     ))
+
+    (push '(google
+            :name "google"
+            :url "https://www.google.com.hk/search?q=%s")
+          search-engine-alist)
+
+    (push '(baidu
+            :name "baidu"
+            :url "http://www.baidu.com/#ie={inputEncoding}&wd=%s")
+          search-engine-alist)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
