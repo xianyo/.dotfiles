@@ -36,29 +36,43 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ivy
-     auto-completion
+     helm
+     (auto-completion :variables
+                       auto-completion-return-key-behavior 'complete
+                       auto-completion-tab-key-behavior 'cycle
+                       auto-completion-complete-with-key-sequence nil
+                       auto-completion-complete-with-key-sequence-delay 0.1
+                       auto-completion-private-snippets-directory nil
+                       auto-completion-enable-snippets-in-popup t
+                       auto-completion-enable-sort-by-usage t
+                       :disabled-for org markdown)
      better-defaults
      emacs-lisp
+     prodigy
+     ;; search-engine
+     (ibuffer :variables ibuffer-group-buffers-by 'projects)
+     ranger
      git
      markdown
-     restructuredtext
-     ;;org
+     ;; latex
+     ;; restructuredtext
+     org
      (shell :variables
              shell-default-height 30
              shell-default-position 'bottom)
-     ;; spell-checking
+     (spell-checking :variables spell-checking-enable-by-default nil)
      syntax-checking
      version-control
      java
      (c-c++ :variables
              c-c++-enable-clang-support t)
-     python
-     php
+     ;; Spython
+     ;; php
+     ;; html
+     ;; javascript
      (markdown :variables
                 markdown-live-preview-engine 'vmd)
-     (gtags :variables 
-             gtags-enable-by-default t)
+     gtags
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -308,6 +322,12 @@ before packages are loaded. If you are unsure, you should try in setting them in
             ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
             ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 
+    ;; https://github.com/syl20bnr/spacemacs/issues/2705
+    ;; (setq tramp-mode nil)
+    (setq tramp-ssh-controlmaster-options
+          "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+
+
   )
 
 (defun dotspacemacs/user-config ()
@@ -336,7 +356,39 @@ you should place your code here."
 
     (setq powerline-default-separator 'arrow)
 
+    (global-set-key (kbd "<backtab>") 'un-indent-by-removing-4-spaces)
+    (defun un-indent-by-removing-4-spaces ()
+      "remove 4 spaces from beginning of of line"
+      (interactive)
+      (save-excursion
+        (save-match-data
+          (beginning-of-line)
+          ;; get rid of tabs at beginning of line
+          (when (looking-at "^\\s-+")
+            (untabify (match-beginning 0) (match-end 0)))
+          (when (looking-at (concat "^" (make-string tab-width ?\ )))
+            (replace-match "")))))
 
+    ;; https://github.com/syl20bnr/spacemacs/issues/7749
+    (defun spacemacs/ivy-persp-switch-project (arg)
+      (interactive "P")
+      (ivy-read "Switch to Project Perspective: "
+                (if (projectile-project-p)
+                    (cons (abbreviate-file-name (projectile-project-root))
+                          (projectile-relevant-known-projects))
+                  projectile-known-projects)
+                :action (lambda (project)
+                          (let ((persp-reset-windows-on-nil-window-conf t))
+                            (persp-switch project)
+                            (let ((projectile-completion-system 'ivy)
+                                  (old-default-directory default-directory))
+                              (projectile-switch-project-by-name project)
+                              (setq default-directory old-default-directory))))))
+    (custom-set-faces
+		 '(company-tooltip-common
+		   ((t (:inherit company-tooltip :weight bold :underline nil))))
+		 '(company-tooltip-common-selection
+		   ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
