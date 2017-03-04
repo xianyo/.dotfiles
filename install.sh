@@ -86,6 +86,15 @@ else
     git pull
 fi
 
+if [ ! -d $CURRENT_DIR/layers/han ]; then
+    echo "Cloneing han layer"
+    git clone git@github.com:et2010/Han.git $CURRENT_DIR/layers/han
+else
+    echo "Upgrade han layer"
+    cd $CURRENT_DIR/layers/han
+    git pull
+fi
+
 mv $HOME/.spacemacs $HOME/.spacemacs_bak >&/dev/null
 
 emacs -nw
@@ -125,6 +134,8 @@ else
     echo "Not found! and add!"
     echo ". $CURRENT_DIR/bashrc" >> $HOME/.bashrc
 fi
+
+cd $CURRENT_DIR
 
 echo 
 echo

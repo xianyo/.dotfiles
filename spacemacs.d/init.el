@@ -73,6 +73,10 @@ values."
      (markdown :variables
                 markdown-live-preview-engine 'vmd)
      gtags
+     (han :variables
+            han-enable-youdao-dict t
+            han-enable-fcitx t
+            han-org-line-spacing 0.2)
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -125,7 +129,7 @@ values."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'vim
+   dotspacemacs-editing-style 'hybrid
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -439,6 +443,13 @@ you should place your code here."
             :name "baidu"
             :url "http://www.baidu.com/#ie={inputEncoding}&wd=%s")
           search-engine-alist)
+
+    (setq-default google-translate-enable-ido-completion t)
+    (setq-default google-translate-default-source-language "en")
+    (setq-default google-translate-default-target-language "zh-CN")
+
+    ;;(spacemacs//set-monospaced-font "Source Code Pro" "WengQuanYi Micro Hei" 16 18)
+
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
