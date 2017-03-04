@@ -78,9 +78,12 @@ if [ ! -f $HOME/.emacs.d/spacemacs.mk ]; then
     mv $HOME/.emacs.d $HOME/.emacs.d_bak >&/dev/null
     echo "Cloneing Spacemacs"
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+    git checkout develop
 else
     echo "Upgrade Spacemacs"
-    cd "$HOME/.emacs.d" && git pull 
+    cd "$HOME/.emacs.d"
+    git checkout develop
+    git pull
 fi
 
 mv $HOME/.spacemacs $HOME/.spacemacs_bak >&/dev/null

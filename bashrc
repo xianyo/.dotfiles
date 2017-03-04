@@ -6,8 +6,9 @@
 alias emacsd='emacs --daemon'
 alias e='emacsclient -t'
 alias ec='emacsclient -c'
-alias duf='du -sh'
- 
+alias es='emacs -nw'
+alias duf='du -sh' 
+
 # run emacs daemon
 #[[ -z $(ps -C 'emacs --daemon' -o pid=) ]] && emacsd >&/dev/null
  
