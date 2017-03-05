@@ -63,10 +63,11 @@ values."
      (spell-checking :variables spell-checking-enable-by-default nil)
      syntax-checking
      version-control
+     shell-scripts
      java
      (c-c++ :variables
              c-c++-enable-clang-support t)
-     ;; python
+     python
      ;; php
      ;; html
      ;; javascript
@@ -77,6 +78,9 @@ values."
             han-enable-youdao-dict t
             han-enable-fcitx t
             han-org-line-spacing 0.2)
+     ;; (chinese :packages youdao-dictionary fcitx
+     ;;          :variables chinese-enable-fcitx t
+     ;;          chinese-enable-youdao-dict t)
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -393,8 +397,6 @@ you should place your code here."
 		   ((t (:inherit company-tooltip :weight bold :underline nil))))
 		 '(company-tooltip-common-selection
 		   ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))  
-
-    (setq x-select-enable-clipboard t)
 
     ;; http://hugoheden.wordpress.com/2009/03/08/copypaste-with-emacs-in-terminal/
     ;; I prefer using the "clipboard" selection (the one the
