@@ -450,7 +450,8 @@ you should place your code here."
     (setq-default google-translate-default-source-language "en")
     (setq-default google-translate-default-target-language "zh-CN")
 
-    ;;(spacemacs//set-monospaced-font "Source Code Pro" "WengQuanYi Micro Hei" 16 18)
+    (if (display-graphic-p)
+        (spacemacs//set-monospaced-font "Source Code Pro" "WengQuanYi Micro Hei" 16 18))
 
 )
 
