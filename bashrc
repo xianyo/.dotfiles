@@ -127,7 +127,7 @@ function mysoftinstall(){
 
     echo "dev soft"
     #soft
-    sudo apt-get install emacs vim-gnome ack-grep silversearcher-ag ctags astyle cscope cmake global python-pygments  --fix-missing
+    sudo apt-get install emacs vim-gnome ack-grep silversearcher-ag picocom ctags astyle cscope cmake global python-pygments  --fix-missing
 }
 
 function ecliminstall(){

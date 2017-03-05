@@ -362,7 +362,7 @@ you should place your code here."
     (setq split-window-preferred-function 'neotree-split-window-sensibly)
 
 
-    (setq powerline-default-separator 'arrow)
+    (setq powerline-default-separator nil)
 
     (global-set-key (kbd "<backtab>") 'un-indent-by-removing-4-spaces)
     (defun un-indent-by-removing-4-spaces ()
@@ -438,7 +438,8 @@ you should place your code here."
 
     (push '(google
             :name "google"
-            :url "https://www.google.com.hk/search?q=%s")
+            :url "https://www.google.com.hk/search?q=%s"
+            )
           search-engine-alist)
 
     (push '(baidu
