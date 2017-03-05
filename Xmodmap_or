@@ -1,0 +1,15 @@
+clear Lock
+clear control
+clear mod1
+clear mod5
+
+keycode 108 = Alt_R NoSymbol Alt_R
+keycode 105 = Control_R NoSymbol Control_R
+
+add control = Control_L Control_R
+add mod1 = Alt_L Alt_R
+
+keycode 66 = Caps_Lock NoSymbol Caps_Lock
+keycode 9 = Escape NoSymbol Escape
+add Lock = Caps_Lock
+

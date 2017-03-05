@@ -58,8 +58,10 @@ values."
      ;; restructuredtext
      org
      (shell :variables
-             shell-default-height 30
-             shell-default-position 'bottom)
+             shell-default-height 25
+             shell-default-shell 'multi-term
+             shell-default-term-shell "/bin/bash"
+             shell-default-position 'top)
      (spell-checking :variables spell-checking-enable-by-default nil)
      syntax-checking
      version-control
