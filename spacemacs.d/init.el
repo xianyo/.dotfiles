@@ -52,7 +52,7 @@ values."
      search-engine
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
      ranger
-     git
+     ;;git
      markdown
      ;; latex
      ;; restructuredtext
@@ -64,7 +64,7 @@ values."
              shell-default-position 'top)
      (spell-checking :variables spell-checking-enable-by-default nil)
      syntax-checking
-     version-control
+     ;;version-control
      shell-scripts
      java
      (c-c++ :variables
@@ -453,8 +453,15 @@ you should place your code here."
     (setq-default google-translate-default-source-language "en")
     (setq-default google-translate-default-target-language "zh-CN")
 
+    (dolist (charset '(kana han cjk-misc bopomofo))
+      (set-fontset-font (frame-parameter nil 'font) charset
+                        (font-spec :family "WenQuanYi Zen Hei" :size 16)))
+
     (if (display-graphic-p)
-        (spacemacs//set-monospaced-font "Source Code Pro" "WengQuanYi Micro Hei" 16 18))
+        (spacemacs//set-monospaced-font "Source Code Pro" "WenQuanYi Zen Hei" 16 16))
+
+    (setq projectile-globally-ignored-directories
+      (append '(".git") projectile-globally-ignored-directories))
 
 )
 
@@ -472,3 +479,24 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (youdao-dictionary names chinese-word-at-point visual-fill-column pangu-spacing org-cliplink find-by-pinyin-dired chinese-pyim chinese-pyim-basedict avy-zap ace-pinyin pinyinlib ace-jump-mode package-build spacemacs-theme)))
+ '(safe-local-variable-values (quote ((org-image-actual-width quote (500))))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)
