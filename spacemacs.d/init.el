@@ -453,15 +453,14 @@ you should place your code here."
     (setq-default google-translate-default-source-language "en")
     (setq-default google-translate-default-target-language "zh-CN")
 
-    (dolist (charset '(kana han cjk-misc bopomofo))
-      (set-fontset-font (frame-parameter nil 'font) charset
-                        (font-spec :family "WenQuanYi Zen Hei" :size 16)))
+    ;;文泉驿正黑
+    (if (display-graphic-p)
+        (dolist (charset '(kana han cjk-misc bopomofo))
+          (set-fontset-font (frame-parameter nil 'font) charset
+                            (font-spec :family "WenQuanYi Zen Hei" :size 16))))
 
     (if (display-graphic-p)
         (spacemacs//set-monospaced-font "Source Code Pro" "WenQuanYi Zen Hei" 16 16))
-
-    (setq projectile-globally-ignored-directories
-      (append '(".git") projectile-globally-ignored-directories))
 
 )
 
