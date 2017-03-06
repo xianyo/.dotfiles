@@ -86,12 +86,12 @@ else
     git pull
 fi
 
-if [ ! -d $CURRENT_DIR/layers/han ]; then
+if [ ! -d $CURRENT_DIR/spacemacs.d/layers/han ]; then
     echo "Cloneing han layer"
-    git clone git@github.com:et2010/Han.git $CURRENT_DIR/layers/han
+    git clone https://github.com/et2010/Han.git $CURRENT_DIR/spacemacs.d/layers/han
 else
     echo "Upgrade han layer"
-    cd $CURRENT_DIR/layers/han
+    cd $CURRENT_DIR/spacemacs.d/layers/han
     git pull
 fi
 
@@ -116,7 +116,7 @@ echo "*********************************************"
 echo "Install autojump"
 if [ ! -e $HOME/.autojumpgit ]; then
     echo "Cloneing autojump"
-    git clone git@github.com:wting/autojump.git  ~/.autojumpgit
+    git clone https://github.com/wting/autojump.git  ~/.autojumpgit
     cd ~/.autojumpgit
     python install.py >&/dev/null
 else
