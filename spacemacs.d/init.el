@@ -78,7 +78,7 @@ values."
      gtags
      (han :variables
             han-enable-youdao-dict t
-            han-enable-fcitx t
+            han-enable-fcitx nil
             han-org-line-spacing 0.2)
      ;; (chinese :packages youdao-dictionary fcitx
      ;;          :variables chinese-enable-fcitx t
