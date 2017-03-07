@@ -81,7 +81,9 @@ function setjdk(){
 
 }
 
-setjdk jdk8
+if [ -d /usr/lib/jvm/java-8-oracle ]; then
+    setjdk jdk8
+fi
 
 #android
 if [ -d ${HOME}/soft/Android/sdk ]; then
