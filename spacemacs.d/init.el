@@ -462,6 +462,21 @@ you should place your code here."
     (if (display-graphic-p)
         (spacemacs//set-monospaced-font "Source Code Pro" "WenQuanYi Zen Hei" 16 16))
 
+    (defun cygwin-explore ()
+      "Find the current buffer in Windows explorer.exe"
+      (interactive)
+      (cond
+       ;; In buffers with file names
+       ((buffer-file-name)
+        (shell-command (concat "explorer.exe /e,/select, \"$(cygpath -w \"" buffer-file-name "\")\"")))
+       ;; In dired-mode
+       ((eq major-mode 'dired-mode)
+        (shell-command (concat "explorer.exe /e, \"$(cygpath -w \"" (dired-current-directory) "\")\"")))
+       ;; fallback to default-directory
+       (t
+        (shell-command (concat "explorer.exe /e, \"$(cygpath -w \"" default-directory "\")\"")))
+       ))
+
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -490,7 +505,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (youdao-dictionary names chinese-word-at-point visual-fill-column pangu-spacing org-cliplink find-by-pinyin-dired chinese-pyim chinese-pyim-basedict avy-zap ace-pinyin pinyinlib ace-jump-mode package-build spacemacs-theme)))
+    (winum unfill ranger prodigy org-projectile org-present org-pomodoro alert log4e gntp org-download insert-shebang ibuffer-projectile htmlize helm-themes helm-swoop helm-pydoc helm-purpose window-purpose imenu-list helm-projectile helm-mode-manager helm-gtags helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag gnuplot fuzzy flyspell-correct-helm flyspell-correct fish-mode engine-mode company-shell auto-dictionary ace-jump-helm-line youdao-dictionary names chinese-word-at-point visual-fill-column pangu-spacing org-cliplink find-by-pinyin-dired chinese-pyim chinese-pyim-basedict avy-zap ace-pinyin pinyinlib ace-jump-mode package-build spacemacs-theme)))
  '(safe-local-variable-values (quote ((org-image-actual-width quote (500))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

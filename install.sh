@@ -127,6 +127,29 @@ fi
 
 echo "Install autojump ok"
 
+
+echo "*********************************************"
+echo "*********************************************"
+echo "**************  oh my zsh   *****************"
+echo "*********************************************"
+echo "*********************************************"
+
+echo "Install oh my zsh"
+if [ ! -e $HOME/.oh-my-zsh ]; then
+    echo "installing oh my zsh"
+    sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+else
+    echo "Upgrade oh-my-zsh"
+    cd "$HOME/.oh-my-zsh" && git pull 
+fi
+rm -rf $HOME/.zshrc
+ln -s $HOME/.dotfiles/zshrc $HOME/.zshrc
+
+git config --global --add oh-my-zsh.hide-status 1
+git config --global --add oh-my-zsh.hide-dirty 1
+
+echo "Install oh my zsh ok"
+
 grep ". $CURRENT_DIR/bashrc" $HOME/.bashrc >/dev/null
 if [ $? -eq 0 ]; then
     echo "Found! no add"
@@ -146,7 +169,5 @@ echo
 echo
 
 echo "ok"
-
-
 
 

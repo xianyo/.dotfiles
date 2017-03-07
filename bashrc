@@ -7,8 +7,14 @@ alias emacsd='emacs --daemon'
 alias e='emacsclient -t'
 alias ec='emacsclient -c'
 alias es='emacs -nw'
+alias wemacsd='emacs-w32 --daemon'
+alias we='emacsclient-w32 -t'
+alias wec='emacsclient-w32 -c'
+alias wes='emacs-w32 -nw'
 alias duf='du -sh' 
 alias picou='picocom -b 115200 /dev/ttyUSB0' 
+alias vi='vim'
+
 
 # run emacs daemon
 #[[ -z $(ps -C 'emacs --daemon' -o pid=) ]] && emacsd >&/dev/null
@@ -136,7 +142,7 @@ function mysoftinstall(){
 
     echo "dev soft"
     #soft
-    sudo apt-get install emacs vim-gnome ack-grep silversearcher-ag picocom ctags astyle cscope cmake global python-pygments  --fix-missing
+    sudo apt-get install emacs vim-gnome ack-grep silversearcher-ag zsh picocom ctags astyle cscope cmake global python-pygments  --fix-missing
 }
 
 function ecliminstall(){
@@ -150,3 +156,7 @@ function ecliminstall(){
 if [ -d ${HOME}/soft/eclipse ]; then
     export PATH=${HOME}/soft/eclipse:$PATH
 fi
+
+export COMSPEC=/cygdrive/c/Windows/System32/cmd.exe
+export DISPLAY=:0.0
+
