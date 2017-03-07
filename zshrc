@@ -51,7 +51,7 @@ ZSH_THEME="af-magic"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump web-search zsh-syntax-highlighting wd sudo)
+plugins=(git autojump web-search zsh-syntax-highlighting wd sudo zsh-autosuggestions z d)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,3 +85,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 . $HOME/.dotfiles/bashrc
+source $HOME/.dotfiles/config/incr-0.2.zsh
+autoload -U compinit && compinit
