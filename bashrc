@@ -31,42 +31,42 @@ function kill-emacs(){
 
 #java
 function setjdk(){
-    if [ $1 == "jdk6" ]; then
+    if [ $1 = "jdk6" ]; then
         #echo "set jdk6"
         if [ ! -d /usr/lib/jvm/java-6-oracle ]; then
             #echo "no jdk6"
             return;
         fi
         export JAVA_HOME=/usr/lib/jvm/java-6-oracle
-    elif [ $1 == "jdk7" ]; then
+    elif [ $1 = "jdk7" ]; then
         #echo "set jdk7"
         if [ ! -d /usr/lib/jvm/java-7-oracle ]; then
             #echo "no jdk7"
             return;
         fi
         export JAVA_HOME=/usr/lib/jvm/java-7-oracle
-    elif [ $1 == "jdk8" ]; then
+    elif [ $1 = "jdk8" ]; then
         #echo "set jdk8"
         if [ ! -d /usr/lib/jvm/java-8-oracle ]; then
             #echo "no jdk8"
             return;
         fi
         export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-    elif [ $1 == "openjdk6" ]; then
+    elif [ $1 = "openjdk6" ]; then
         #echo "set openjdk6"
         if [ ! -d /usr/lib/jvm/java-6-openjdk-amd64 ]; then
             #echo "no openjdk6"
             return;
         fi
         export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-amd64
-    elif [ $1 == "openjdk7" ]; then
+    elif [ $1 = "openjdk7" ]; then
         #echo "set openjdk7"
         if [ ! -d /usr/lib/jvm/java-7-openjdk-amd64 ]; then
             #echo "no openjdk7"
             return;
         fi
         export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-    elif [ $1 == "openjdk8" ]; then
+    elif [ $1 = "openjdk8" ]; then
         #echo "set openjdk8"
         if [ ! -d /usr/lib/jvm/java-8-openjdk-amd64 ]; then
             #echo "no openjdk8"
@@ -81,9 +81,7 @@ function setjdk(){
 
 }
 
-if [ -d /usr/lib/jvm/java-8-oracle ]; then
-    setjdk jdk8
-fi
+setjdk jdk8
 
 #android
 if [ -d ${HOME}/soft/Android/sdk ]; then
