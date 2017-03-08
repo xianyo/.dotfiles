@@ -86,4 +86,4 @@ source $ZSH/oh-my-zsh.sh
 
 . $HOME/.dotfiles/bashrc
 source $HOME/.dotfiles/config/incr-0.2.zsh
-autoload -U compinit && compinit
+autoload -U compinit && compinit -u
