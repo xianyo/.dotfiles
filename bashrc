@@ -157,6 +157,3 @@ if [ -d ${HOME}/soft/eclipse ]; then
     export PATH=${HOME}/soft/eclipse:$PATH
 fi
 
-export COMSPEC=/cygdrive/c/Windows/System32/cmd.exe
-export DISPLAY=:0.0
-
