@@ -438,15 +438,14 @@ you should place your code here."
         ;; http://www.mail-archive.com/help-gnu-emacs@gnu.org/msg03577.html
     ))
 
-    (push '(google
-            :name "google"
-            :url "https://www.google.com.hk/search?q=%s"
-            )
+    (push '(hkgo
+            :name "hkgo"
+            :url "https://www.google.com.hk/search?q=%s")
           search-engine-alist)
 
     (push '(baidu
             :name "baidu"
-            :url "http://www.baidu.com/#ie={inputEncoding}&wd=%s")
+            :url "https://www.baidu.com/s?wd=%s")
           search-engine-alist)
 
     (setq-default google-translate-enable-ido-completion t)
