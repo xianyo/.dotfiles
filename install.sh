@@ -23,6 +23,7 @@ mv $HOME/.vim $HOME/.vim_bak >&/dev/null
 mv $HOME/.vimrc $HOME/.vimrc_bak >&/dev/null
 lnif $CURRENT_DIR/vim/vimrc $HOME/.vimrc
 lnif "$CURRENT_DIR/vim" "$HOME/.vim"
+lnif "$CURRENT_DIR/tmux.conf "$HOME/.tmux.conf"
 
 echo "Install vundle"
 if [ ! -e $CURRENT_DIR/vim/bundle/vundle ]; then

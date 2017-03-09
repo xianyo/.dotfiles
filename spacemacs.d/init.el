@@ -66,6 +66,7 @@ values."
      syntax-checking
      ;;version-control
      shell-scripts
+     tmux
      java
      (c-c++ :variables
              c-c++-enable-clang-support t)
