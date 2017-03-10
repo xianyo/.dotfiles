@@ -157,3 +157,6 @@ if [ -d ${HOME}/soft/eclipse ]; then
     export PATH=${HOME}/soft/eclipse:$PATH
 fi
 
+if [ -d ${HOME}/.dotfiles/bin ]; then
+    export PATH=${HOME}/.dotfiles/bin:$PATH
+fi
