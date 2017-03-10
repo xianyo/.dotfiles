@@ -587,7 +587,7 @@ imap <C-v> <C-r><C-o>+
 nmap <C-v> "+p
 
 "共享剪贴板  
-set clipboard=unnamed
+set clipboard=unnamedplus,autoselect,exclude:cons\\\\|linux
 
 "==========================================
 " Theme Settings  主题设置
