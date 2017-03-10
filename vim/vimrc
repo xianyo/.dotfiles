@@ -975,6 +975,8 @@ endif
 Bundle 'tomasr/molokai'
 let g:molokai_original = 1
 
+Bundle 'liuchengxu/space-vim-dark'
+
 " theme主题
 "set background=dark "light
 "colorscheme solarized
@@ -983,6 +985,7 @@ let g:molokai_original = 1
 "autocmd InsertEnter * se cul
 
 colorscheme molokai
+"colorscheme space-vim-dark
 "colorscheme desert
 "colorscheme ron
 
