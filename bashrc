@@ -160,3 +160,23 @@ fi
 if [ -d ${HOME}/.dotfiles/bin ]; then
     export PATH=${HOME}/.dotfiles/bin:$PATH
 fi
+
+
+tmux_init()
+{
+    if [ ! -z $1 ];then
+        $1=work
+    fi
+
+    tmux new-session -s $1 -d -n "bash"     # 开启一个会话
+    tmux new-window -n "emacs" "emacs -nw"       # 开启一个窗口
+    tmux new-window -n "zsh" "zsh"              # 开启一个窗口
+    tmux -2 attach-session -d   
+    tmux selectw -t 0
+}
+
+function mytmux(){
+    if which tmux 2>&1 >/dev/null; then
+        test -z "$TMUX" && (tmux attach || tmux_init $1)
+    fi
+}
