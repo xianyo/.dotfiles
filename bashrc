@@ -162,17 +162,24 @@ if [ -d ${HOME}/.dotfiles/bin ]; then
 fi
 
 
-tmux_init()
+tmuxwork()
 {
-    if [ ! -z $1 ];then
-        $1=work
+    if [ -z $1 ];then
+        session=work
+    else
+        session=$1
     fi
-
-    tmux new-session -s $1 -d -n "bash"     # 开启一个会话
-    tmux new-window -n "emacs" "emacs -nw"       # 开启一个窗口
-    tmux new-window -n "zsh" "zsh"              # 开启一个窗口
-    tmux -2 attach-session -d   
-    tmux selectw -t 0
+    echo "session $session"
+    
+    tmux has -t $session
+    if [ $? != 0 ];then
+        echo "new $session"
+        tmux new-session -s $session -d -n "bash"     # 开启一个会话
+        tmux new-window -t $session -n "emacs" "emacs -nw"       # 开启一个窗口
+        tmux new-window -t $session -n "zsh" "zsh"       # 开启一个窗口
+        tmux selectw -t $session:0
+    fi
+    tmux attach -t $session
 }
 
 function mytmux(){
@@ -180,3 +187,26 @@ function mytmux(){
         test -z "$TMUX" && (tmux attach || tmux_init $1)
     fi
 }
+
+tmuxpax()
+{
+    if [ -z $1 ];then
+        session=work
+    else
+        session=$1
+    fi
+    echo "session $session"
+    
+    tmux has -t $session
+    if [ $? != 0 ];then
+        echo "new $session"
+        tmux new-session -s $session -d -n "zsh"     # 开启一个会话
+        tmux new-window -t $session -n "pd_es" "ssh pd"       # 开启一个窗口
+        tmux new-window -t $session -n "pd" "ssh pd"       # 开启一个窗口
+        tmux new-window -t $session -n "bu2_es" "ssh bu2"              # 开启一个窗口
+        tmux new-window -t $session -n "bu2" "ssh bu2"              # 开启一个窗口
+        tmux selectw -t $session:0
+    fi
+    tmux attach -t $session
+}
+
