@@ -984,8 +984,8 @@ Bundle 'liuchengxu/space-vim-dark'
 "set t_Co=256
 "autocmd InsertEnter * se cul
 
-"colorscheme molokai
-colorscheme space-vim-dark
+colorscheme molokai
+"colorscheme space-vim-dark
 "colorscheme desert
 "colorscheme ron
 
