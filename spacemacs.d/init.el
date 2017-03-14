@@ -444,10 +444,10 @@ you should place your code here."
             :url "https://www.google.com.hk/search?q=%s")
           search-engine-alist)
 
-    (push '(baidu
-            :name "baidu"
-            :url "https://www.baidu.com/s?wd=%s")
-          search-engine-alist)
+    ;; (push '(baidu
+    ;;         :name "baidu"
+    ;;         :url "https://www.baidu.com/s?wd=%s")
+    ;;       search-engine-alist)
 
     (setq-default google-translate-enable-ido-completion t)
     (setq-default google-translate-default-source-language "en")
