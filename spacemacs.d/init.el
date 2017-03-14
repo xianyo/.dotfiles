@@ -52,7 +52,7 @@ values."
      imenu-list
      search-engine
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
-     ranger
+     ;;ranger
      ;;git
      markdown
      ;; latex
@@ -477,6 +477,24 @@ you should place your code here."
        (t
         (shell-command (concat "explorer.exe /e, \"$(cygpath -w \"" default-directory "\")\"")))
        ))
+
+    ;; dired just one buffer
+    (put 'dired-find-alternate-file 'disabled nil)
+
+    ;; 延迟加载
+    (with-eval-after-load 'dired
+      (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
+
+    (setq helm-echo-input-in-header-line nil)
+    (remove-hook 'helm-minibuffer-set-up-hook 'helm-hide-minibuffer-maybe)
+
+    ;;Startup emacs server
+    (unless (server-running-p) (server-start))
+
+    ;;Don’t ask me when kill process buffer
+    (setq kill-buffer-query-functions
+          (remq 'process-kill-buffer-query-function
+                kill-buffer-query-functions))
 
 )
 
