@@ -618,9 +618,9 @@ if has("gui_running")
                 \endif<CR>
 endif
 
-if exists('$TMUX')
-  set term=screen-256color
-endif
+"if exists('$TMUX')
+set term=screen-256color
+"endif
 
 "设置标记一列的背景颜色和数字一行颜色一致
 hi! link SignColumn   LineNr

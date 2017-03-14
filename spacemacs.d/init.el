@@ -48,7 +48,8 @@ values."
                        :disabled-for org markdown)
      better-defaults
      emacs-lisp
-     prodigy
+     ;;prodigy
+     imenu-list
      search-engine
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
      ranger
@@ -58,10 +59,10 @@ values."
      ;; restructuredtext
      org
      (shell :variables
-             shell-default-height 25
+             shell-default-height 50
              shell-default-shell 'multi-term
              shell-default-term-shell "/bin/bash"
-             shell-default-position 'top)
+             shell-default-position 'right)
      (spell-checking :variables spell-checking-enable-by-default nil)
      syntax-checking
      ;;version-control
