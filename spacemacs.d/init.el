@@ -507,7 +507,7 @@ you should place your code here."
     (prefer-coding-system 'utf-8)
 
     (gpm-mouse-mode -1)
-    (xterm-mouse-mode -1)
+    ;;(xterm-mouse-mode -1)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
