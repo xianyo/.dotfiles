@@ -51,7 +51,7 @@ values."
      ;;prodigy
      imenu-list
      search-engine
-     (ibuffer :variables ibuffer-group-buffers-by 'projects)
+     ;;(ibuffer :variables ibuffer-group-buffers-by 'projects)
      ;;ranger
      ;;git
      markdown
