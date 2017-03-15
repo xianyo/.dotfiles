@@ -494,7 +494,17 @@ you should place your code here."
     (setq kill-buffer-query-functions
           (remq 'process-kill-buffer-query-function
                 kill-buffer-query-functions))
-
+   
+    (setq system-time-locale "en_US")
+    (set-language-environment "UTF-8")
+    (setq-default default-buffer-file-coding-system 'utf-8)
+    ;; (setq coding-system-for-write 'utf-8)
+    (set-terminal-coding-system 'utf-8)
+    (set-keyboard-coding-system 'utf-8)
+    (set-selection-coding-system 'utf-8)
+    (setq locale-coding-system 'utf-8)
+    (prefer-coding-system 'gb18030)
+    (prefer-coding-system 'utf-8)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
