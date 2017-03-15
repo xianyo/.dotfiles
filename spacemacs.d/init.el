@@ -505,6 +505,8 @@ you should place your code here."
     (setq locale-coding-system 'utf-8)
     (prefer-coding-system 'gb18030)
     (prefer-coding-system 'utf-8)
+
+    (xterm-mouse-mode -1)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
