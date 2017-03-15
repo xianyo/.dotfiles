@@ -494,7 +494,7 @@ you should place your code here."
     (setq kill-buffer-query-functions
           (remq 'process-kill-buffer-query-function
                 kill-buffer-query-functions))
-   
+
     (setq system-time-locale "en_US")
     (set-language-environment "UTF-8")
     (setq-default default-buffer-file-coding-system 'utf-8)
@@ -506,6 +506,7 @@ you should place your code here."
     (prefer-coding-system 'gb18030)
     (prefer-coding-system 'utf-8)
 
+    (gpm-mouse-mode -1)
     (xterm-mouse-mode -1)
 )
 
