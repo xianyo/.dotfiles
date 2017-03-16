@@ -512,6 +512,14 @@ you should place your code here."
 
     ;; Bind clang-format-region to C-M-tab in all modes:
     (global-set-key [C-M-tab] 'clang-format-region)
+
+    (spacemacs/set-leader-keys "fl" 'projectile-find-file-in-directory)
+
+    ;; ---禁止备份
+    (setq make-backup-files nil)
+
+    ;; 不生成临时文件
+    (setq-default make-backup-files nil)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
