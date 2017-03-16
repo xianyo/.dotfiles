@@ -42,7 +42,7 @@ values."
                        auto-completion-tab-key-behavior 'cycle
                        auto-completion-complete-with-key-sequence nil
                        auto-completion-complete-with-key-sequence-delay 0.1
-                       auto-completion-private-snippets-directory nil
+                       auto-completion-private-snippets-directory "~/.spacemacs.d/snippets/"
                        auto-completion-enable-snippets-in-popup t
                        auto-completion-enable-sort-by-usage t
                        :disabled-for org markdown)
@@ -69,8 +69,7 @@ values."
      shell-scripts
      java
      semantic
-     (c-c++ :variables
-             c-c++-enable-clang-support t)
+     c-c++
      python
      ;; php
      ;; html
@@ -337,9 +336,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
     ;; https://github.com/syl20bnr/spacemacs/issues/2705
     ;; (setq tramp-mode nil)
     (setq tramp-ssh-controlmaster-options
-          "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
-
-
+          "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no") 
   )
 
 (defun dotspacemacs/user-config ()
@@ -514,7 +511,7 @@ you should place your code here."
     (global-set-key [C-M-tab] 'clang-format-region)
 
     (spacemacs/set-leader-keys "fl" 'projectile-find-file-in-directory)
-
+   
     ;; ---禁止备份
     (setq make-backup-files nil)
 
