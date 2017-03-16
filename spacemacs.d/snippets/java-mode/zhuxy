@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: zhuxy
-# key: zhuxy
-# --
-zhuxy change  `(current-time-string)`
