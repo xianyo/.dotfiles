@@ -68,6 +68,7 @@ values."
      ;;version-control
      shell-scripts
      java
+     semantic
      (c-c++ :variables
              c-c++-enable-clang-support t)
      python
@@ -506,8 +507,11 @@ you should place your code here."
     (prefer-coding-system 'gb18030)
     (prefer-coding-system 'utf-8)
 
-    (gpm-mouse-mode -1)
+    ;;(gpm-mouse-mode -1)
     ;;(xterm-mouse-mode -1)
+
+    ;; Bind clang-format-region to C-M-tab in all modes:
+    (global-set-key [C-M-tab] 'clang-format-region)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -536,7 +540,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (winum unfill ranger prodigy org-projectile org-present org-pomodoro alert log4e gntp org-download insert-shebang ibuffer-projectile htmlize helm-themes helm-swoop helm-pydoc helm-purpose window-purpose imenu-list helm-projectile helm-mode-manager helm-gtags helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag gnuplot fuzzy flyspell-correct-helm flyspell-correct fish-mode engine-mode company-shell auto-dictionary ace-jump-helm-line youdao-dictionary names chinese-word-at-point visual-fill-column pangu-spacing org-cliplink find-by-pinyin-dired chinese-pyim chinese-pyim-basedict avy-zap ace-pinyin pinyinlib ace-jump-mode package-build spacemacs-theme)))
+    (stickyfunc-enhance srefactor winum unfill ranger prodigy org-projectile org-present org-pomodoro alert log4e gntp org-download insert-shebang ibuffer-projectile htmlize helm-themes helm-swoop helm-pydoc helm-purpose window-purpose imenu-list helm-projectile helm-mode-manager helm-gtags helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag gnuplot fuzzy flyspell-correct-helm flyspell-correct fish-mode engine-mode company-shell auto-dictionary ace-jump-helm-line youdao-dictionary names chinese-word-at-point visual-fill-column pangu-spacing org-cliplink find-by-pinyin-dired chinese-pyim chinese-pyim-basedict avy-zap ace-pinyin pinyinlib ace-jump-mode package-build spacemacs-theme)))
  '(safe-local-variable-values (quote ((org-image-actual-width quote (500))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
