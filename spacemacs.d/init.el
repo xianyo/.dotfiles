@@ -57,7 +57,7 @@ values."
      markdown
      ;; latex
      ;; restructuredtext
-     org
+     ;; org
      (shell :variables
              shell-default-height 50
              shell-default-shell 'multi-term
@@ -194,7 +194,7 @@ values."
    ;; and TAB or <C-m> and RET.
    ;; In the terminal, these pairs are generally indistinguishable, so this only
    ;; works in the GUI. (default nil)
-   dotspacemacs-distinguish-gui-tab nil
+   dotspacemacs-distinguish-gui-tab t
    ;; If non nil `Y' is remapped to `y$' in Evil states. (default nil)
    dotspacemacs-remap-Y-to-y$ nil
    ;; If non-nil, the shift mappings `<' and `>' retain visual state if used
@@ -398,7 +398,7 @@ you should place your code here."
 		   ((t (:inherit company-tooltip :weight bold :underline nil))))
 		 '(company-tooltip-common-selection
 		   ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))  
-
+    
     ;; http://hugoheden.wordpress.com/2009/03/08/copypaste-with-emacs-in-terminal/
     ;; I prefer using the "clipboard" selection (the one the
     ;; typically is used by c-c/c-v) before the primary selection
@@ -511,12 +511,14 @@ you should place your code here."
     (global-set-key [C-M-tab] 'clang-format-region)
 
     (spacemacs/set-leader-keys "fl" 'projectile-find-file-in-directory)
-   
+
     ;; ---禁止备份
     (setq make-backup-files nil)
 
     ;; 不生成临时文件
     (setq-default make-backup-files nil)
+
+    (spacemacs/set-leader-keys "jh" 'evil-jump-forward)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -545,7 +547,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (stickyfunc-enhance srefactor winum unfill ranger prodigy org-projectile org-present org-pomodoro alert log4e gntp org-download insert-shebang ibuffer-projectile htmlize helm-themes helm-swoop helm-pydoc helm-purpose window-purpose imenu-list helm-projectile helm-mode-manager helm-gtags helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag gnuplot fuzzy flyspell-correct-helm flyspell-correct fish-mode engine-mode company-shell auto-dictionary ace-jump-helm-line youdao-dictionary names chinese-word-at-point visual-fill-column pangu-spacing org-cliplink find-by-pinyin-dired chinese-pyim chinese-pyim-basedict avy-zap ace-pinyin pinyinlib ace-jump-mode package-build spacemacs-theme)))
+    (ensime meghanada groovy-mode groovy-imports pcache gradle-mode sbt-mode scala-mode stickyfunc-enhance srefactor winum unfill ranger prodigy org-projectile org-present org-pomodoro alert log4e gntp org-download insert-shebang ibuffer-projectile htmlize helm-themes helm-swoop helm-pydoc helm-purpose window-purpose imenu-list helm-projectile helm-mode-manager helm-gtags helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag gnuplot fuzzy flyspell-correct-helm flyspell-correct fish-mode engine-mode company-shell auto-dictionary ace-jump-helm-line youdao-dictionary names chinese-word-at-point visual-fill-column pangu-spacing org-cliplink find-by-pinyin-dired chinese-pyim chinese-pyim-basedict avy-zap ace-pinyin pinyinlib ace-jump-mode package-build spacemacs-theme)))
  '(safe-local-variable-values (quote ((org-image-actual-width quote (500))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
