@@ -519,6 +519,9 @@ you should place your code here."
     (setq-default make-backup-files nil)
 
     (spacemacs/set-leader-keys "jh" 'evil-jump-forward)
+
+    (global-set-key (kbd "C-SPC") nil)
+    (global-set-key (kbd "C-C SPC") 'set-mark-command)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
