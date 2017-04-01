@@ -522,6 +522,8 @@ you should place your code here."
 
     (global-set-key (kbd "C-SPC") nil)
     (global-set-key (kbd "C-C SPC") 'set-mark-command)
+
+    (define-key evil-normal-state-map (kbd "<down-mouse-1>") 'evil-insert)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
