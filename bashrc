@@ -13,7 +13,7 @@ alias wec='emacsclient-w32 -c'
 alias wes='emacs-w32 -nw'
 alias duf='du -sh' 
 alias picou='picocom -b 115200 /dev/ttyUSB0' 
-alias vi='vim'
+alias vi='e'
 
 
 # run emacs daemon

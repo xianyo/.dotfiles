@@ -70,7 +70,7 @@ values."
      java
      semantic
      c-c++
-     python
+     ;; python
      ;; php
      ;; html
      ;; javascript
@@ -347,57 +347,52 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-    (setq 
-     eclim-eclipse-dirs "~/soft/eclipse"
-     eclim-executable "~/soft/eclipse/eclim"
-     ;; Specify the workspace to use by default
-     eclimd-default-workspace "~/work/workspace"
-     ;; Whether or not to block emacs until eclimd is ready
-     eclimd-wait-for-process t)
+    ;; (setq 
+    ;;  eclim-eclipse-dirs "~/soft/eclipse"
+    ;;  eclim-executable "~/soft/eclipse/eclim"
+    ;;  ;; Specify the workspace to use by default
+    ;;  eclimd-default-workspace "~/work/workspace"
+    ;;  ;; Whether or not to block emacs until eclimd is ready
+    ;;  eclimd-wait-for-process t)
 
-    ;; 设置neotree
-    (setq neo-toggle-window-keep-p t)       ;; 刷新时保持光标在当前位置
-    (setq neo-show-hidden-files nil)        ;; 不显示隐藏文件
-    (setq neo-force-change-root t)          ;; 当root改变时，是否强制相应改变而不需要询问
-    (setq neo-persist-show t)               ;; C-x 1 时neotree window不关闭
-    (setq split-window-preferred-function 'neotree-split-window-sensibly)
+    ;; ;; 设置neotree
+    ;; (setq neo-toggle-window-keep-p t)       ;; 刷新时保持光标在当前位置
+    ;; (setq neo-show-hidden-files nil)        ;; 不显示隐藏文件
+    ;; (setq neo-force-change-root t)          ;; 当root改变时，是否强制相应改变而不需要询问
+    ;; (setq neo-persist-show t)               ;; C-x 1 时neotree window不关闭
+    ;; (setq split-window-preferred-function 'neotree-split-window-sensibly)
 
 
     (setq powerline-default-separator nil)
 
-    (global-set-key (kbd "<backtab>") 'un-indent-by-removing-4-spaces)
-    (defun un-indent-by-removing-4-spaces ()
-      "remove 4 spaces from beginning of of line"
-      (interactive)
-      (save-excursion
-        (save-match-data
-          (beginning-of-line)
-          ;; get rid of tabs at beginning of line
-          (when (looking-at "^\\s-+")
-            (untabify (match-beginning 0) (match-end 0)))
-          (when (looking-at (concat "^" (make-string tab-width ?\ )))
-            (replace-match "")))))
+    ;; (global-set-key (kbd "<backtab>") 'un-indent-by-removing-4-spaces)
+    ;; (defun un-indent-by-removing-4-spaces ()
+    ;;   "remove 4 spaces from beginning of of line"
+    ;;   (interactive)
+    ;;   (save-excursion
+    ;;     (save-match-data
+    ;;       (beginning-of-line)
+    ;;       ;; get rid of tabs at beginning of line
+    ;;       (when (looking-at "^\\s-+")
+    ;;         (untabify (match-beginning 0) (match-end 0)))
+    ;;       (when (looking-at (concat "^" (make-string tab-width ?\ )))
+    ;;         (replace-match "")))))
 
     ;; https://github.com/syl20bnr/spacemacs/issues/7749
-    (defun spacemacs/ivy-persp-switch-project (arg)
-      (interactive "P")
-      (ivy-read "Switch to Project Perspective: "
-                (if (projectile-project-p)
-                    (cons (abbreviate-file-name (projectile-project-root))
-                          (projectile-relevant-known-projects))
-                  projectile-known-projects)
-                :action (lambda (project)
-                          (let ((persp-reset-windows-on-nil-window-conf t))
-                            (persp-switch project)
-                            (let ((projectile-completion-system 'ivy)
-                                  (old-default-directory default-directory))
-                              (projectile-switch-project-by-name project)
-                              (setq default-directory old-default-directory))))))
-    (custom-set-faces
-		 '(company-tooltip-common
-		   ((t (:inherit company-tooltip :weight bold :underline nil))))
-		 '(company-tooltip-common-selection
-		   ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))  
+    ;; (defun spacemacs/ivy-persp-switch-project (arg)
+    ;;   (interactive "P")
+    ;;   (ivy-read "Switch to Project Perspective: "
+    ;;             (if (projectile-project-p)
+    ;;                 (cons (abbreviate-file-name (projectile-project-root))
+    ;;                       (projectile-relevant-known-projects))
+    ;;               projectile-known-projects)
+    ;;             :action (lambda (project)
+    ;;                       (let ((persp-reset-windows-on-nil-window-conf t))
+    ;;                         (persp-switch project)
+    ;;                         (let ((projectile-completion-system 'ivy)
+    ;;                               (old-default-directory default-directory))
+    ;;                           (projectile-switch-project-by-name project)
+    ;;                           (setq default-directory old-default-directory))))))
     
     ;; http://hugoheden.wordpress.com/2009/03/08/copypaste-with-emacs-in-terminal/
     ;; I prefer using the "clipboard" selection (the one the
@@ -437,10 +432,10 @@ you should place your code here."
         ;; http://www.mail-archive.com/help-gnu-emacs@gnu.org/msg03577.html
     ))
 
-    (push '(hkgo
-            :name "hkgo"
-            :url "https://www.google.com.hk/search?q=%s")
-          search-engine-alist)
+    ;; (push '(hkgo
+    ;;         :name "hkgo"
+    ;;         :url "https://www.google.com.hk/search?q=%s")
+    ;;       search-engine-alist)
 
     ;; (push '(baidu
     ;;         :name "baidu"
@@ -476,11 +471,11 @@ you should place your code here."
        ))
 
     ;; dired just one buffer
-    (put 'dired-find-alternate-file 'disabled nil)
+    ;; (put 'dired-find-alternate-file 'disabled nil)
 
     ;; 延迟加载
-    (with-eval-after-load 'dired
-      (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
+    ;; (with-eval-after-load 'dired
+    ;;   (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
 
     (setq helm-echo-input-in-header-line nil)
     (remove-hook 'helm-minibuffer-set-up-hook 'helm-hide-minibuffer-maybe)
@@ -523,6 +518,10 @@ you should place your code here."
     (global-set-key (kbd "C-SPC") nil)
     (global-set-key (kbd "C-C SPC") 'set-mark-command)
 
+    (global-set-key (kbd "C-x C-z") 'kill-emacs) 
+    (define-key evil-motion-state-map (kbd "C-x C-z") 'evil-emacs-state)
+    (define-key evil-motion-state-map (kbd "C-z") 'suspend-frame)
+
     (define-key evil-normal-state-map (kbd "<down-mouse-1>") 'evil-insert)
 )
 
@@ -552,12 +551,13 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ensime meghanada groovy-mode groovy-imports pcache gradle-mode sbt-mode scala-mode stickyfunc-enhance srefactor winum unfill ranger prodigy org-projectile org-present org-pomodoro alert log4e gntp org-download insert-shebang ibuffer-projectile htmlize helm-themes helm-swoop helm-pydoc helm-purpose window-purpose imenu-list helm-projectile helm-mode-manager helm-gtags helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag gnuplot fuzzy flyspell-correct-helm flyspell-correct fish-mode engine-mode company-shell auto-dictionary ace-jump-helm-line youdao-dictionary names chinese-word-at-point visual-fill-column pangu-spacing org-cliplink find-by-pinyin-dired chinese-pyim chinese-pyim-basedict avy-zap ace-pinyin pinyinlib ace-jump-mode package-build spacemacs-theme)))
+    (stickyfunc-enhance srefactor package-build spacemacs-theme)))
  '(safe-local-variable-values (quote ((org-image-actual-width quote (500))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
 )
