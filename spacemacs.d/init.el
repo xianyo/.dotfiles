@@ -50,22 +50,22 @@ values."
      emacs-lisp
      ;;prodigy
      imenu-list
-     search-engine
+     ;;search-engine
      ;;(ibuffer :variables ibuffer-group-buffers-by 'projects)
      ;;ranger
      ;;git
-     markdown
      ;; latex
      ;; restructuredtext
      ;; org
-     (shell :variables
-             shell-default-height 50
-             shell-default-shell 'multi-term
-             shell-default-term-shell "/bin/bash"
-             shell-default-position 'right)
-     (spell-checking :variables spell-checking-enable-by-default nil)
-     syntax-checking
+     ;; (shell :variables
+     ;;         shell-default-height 50
+     ;;         shell-default-shell 'multi-term
+     ;;         shell-default-term-shell "/bin/bash"
+     ;;         shell-default-position 'right)
+     ;; (spell-checking :variables spell-checking-enable-by-default nil)
+     ;; syntax-checking
      ;;version-control
+     fasd
      shell-scripts
      java
      semantic
@@ -362,8 +362,9 @@ you should place your code here."
     ;; (setq neo-persist-show t)               ;; C-x 1 时neotree window不关闭
     ;; (setq split-window-preferred-function 'neotree-split-window-sensibly)
 
-
+    (setq vc-handled-backends ())
     (setq powerline-default-separator nil)
+    (setq projectile-enable-caching t)
 
     ;; (global-set-key (kbd "<backtab>") 'un-indent-by-removing-4-spaces)
     ;; (defun un-indent-by-removing-4-spaces ()
@@ -442,9 +443,9 @@ you should place your code here."
     ;;         :url "https://www.baidu.com/s?wd=%s")
     ;;       search-engine-alist)
 
-    (setq-default google-translate-enable-ido-completion t)
-    (setq-default google-translate-default-source-language "en")
-    (setq-default google-translate-default-target-language "zh-CN")
+    ;; (setq-default google-translate-enable-ido-completion t)
+    ;; (setq-default google-translate-default-source-language "en")
+    ;; (setq-default google-translate-default-target-language "zh-CN")
 
     ;;文泉驿正黑
     (if (display-graphic-p)
@@ -481,7 +482,7 @@ you should place your code here."
     (remove-hook 'helm-minibuffer-set-up-hook 'helm-hide-minibuffer-maybe)
 
     ;;Startup emacs server
-    (unless (server-running-p) (server-start))
+    ;;(unless (server-running-p) (server-start))
 
     ;;Don’t ask me when kill process buffer
     (setq kill-buffer-query-functions
