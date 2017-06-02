@@ -57,11 +57,11 @@ values."
      ;; latex
      ;; restructuredtext
      ;; org
-     ;; (shell :variables
-     ;;         shell-default-height 50
-     ;;         shell-default-shell 'multi-term
-     ;;         shell-default-term-shell "/bin/bash"
-     ;;         shell-default-position 'right)
+     (shell :variables
+             shell-default-height 50
+             shell-default-shell 'multi-term
+             shell-default-term-shell "/bin/bash"
+             shell-default-position 'right)
      ;; (spell-checking :variables spell-checking-enable-by-default nil)
      ;; syntax-checking
      ;;version-control
@@ -524,6 +524,7 @@ you should place your code here."
     (define-key evil-motion-state-map (kbd "C-z") 'suspend-frame)
 
     (define-key evil-normal-state-map (kbd "<down-mouse-1>") 'evil-insert)
+
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
