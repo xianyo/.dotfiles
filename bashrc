@@ -14,7 +14,9 @@ alias wes='emacs-w32 -nw'
 alias duf='du -sh' 
 alias picou='picocom -b 115200 /dev/ttyUSB0' 
 alias vi='e'
-
+alias fe='a -e "emacsclient -t"' 
+alias fv='a -e vim' 
+alias o='a -e xdg-open'
 
 # run emacs daemon
 #[[ -z $(ps -C 'emacs --daemon' -o pid=) ]] && emacsd >&/dev/null
