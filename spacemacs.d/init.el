@@ -67,7 +67,7 @@ values."
      ;;version-control
      fasd
      shell-scripts
-     java
+     (java :variables java-backend nil)
      semantic
      c-c++
      ;; python
@@ -553,7 +553,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (stickyfunc-enhance srefactor package-build spacemacs-theme)))
+    (xterm-color vmd-mode spaceline powerline shell-pop popwin neotree multi-term mmm-mode markdown-toc markdown-mode hl-todo helm-company helm-c-yasnippet golden-ratio gh-md fuzzy fill-column-indicator fancy-battery eshell-z eshell-prompt-extras esh-help company-statistics company-shell company-emacs-eclim company-c-headers auto-yasnippet ac-ispell auto-complete stickyfunc-enhance srefactor package-build spacemacs-theme)))
  '(safe-local-variable-values (quote ((org-image-actual-width quote (500))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
