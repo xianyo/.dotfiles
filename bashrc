@@ -178,7 +178,6 @@ tmuxwork()
         echo "new $session"
         tmux new-session -s $session -d -n "bash"     # 开启一个会话
         tmux new-window -t $session -n "emacs" "emacs -nw"       # 开启一个窗口
-        tmux new-window -t $session -n "zsh" "zsh"       # 开启一个窗口
         tmux selectw -t $session:0
     fi
     tmux attach -t $session
@@ -202,11 +201,13 @@ tmuxpax()
     tmux has -t $session
     if [ $? != 0 ];then
         echo "new $session"
-        tmux new-session -s $session -d -n "zsh"     # 开启一个会话
-        tmux new-window -t $session -n "pd_es" "ssh pd"       # 开启一个窗口
-        tmux new-window -t $session -n "pd" "ssh pd"       # 开启一个窗口
-        tmux new-window -t $session -n "bu2_es" "ssh bu2"              # 开启一个窗口
-        tmux new-window -t $session -n "bu2" "ssh bu2"              # 开启一个窗口
+        tmux new-session -s $session -d -n "bash"     # 开启一个会话
+        tmux new-window -t $session -n "pd1" "ssh pd"       # 开启一个窗口
+        tmux new-window -t $session -n "pd2" "ssh pd"       # 开启一个窗口
+        tmux new-window -t $session -n "pd3" "ssh pd"       # 开启一个窗口
+        tmux new-window -t $session -n "pd4" "ssh pd"       # 开启一个窗口
+        tmux new-window -t $session -n "bu2_1" "ssh bu2"              # 开启一个窗口
+        tmux new-window -t $session -n "bu2_2" "ssh bu2"              # 开启一个窗口
         tmux selectw -t $session:0
     fi
     tmux attach -t $session
