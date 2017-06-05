@@ -3,7 +3,7 @@
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
 
 # alias emacs
-alias emacsd='nohup emacs --daemon &'
+alias emacsd='nohup emacs --daemon >/dev/null 2>&1'
 alias e='emacsclient -t'
 alias ec='emacsclient -c'
 alias es='emacs -nw'
@@ -19,7 +19,7 @@ alias fv='a -e vim'
 alias o='a -e xdg-open'
 
 # run emacs daemon
-#[[ -z $(ps -C 'emacs --daemon' -o pid=) ]] && emacsd >&/dev/null
+[[ -z $(ps -C 'emacs --daemon' -o pid=) ]] && emacsd >&/dev/null
  
 # add kill emacs function
 function kill-emacs(){
@@ -176,8 +176,9 @@ tmuxwork()
     tmux has -t $session
     if [ $? != 0 ];then
         echo "new $session"
-        tmux new-session -s $session -d -n "bash"     # 开启一个会话
-        tmux new-window -t $session -n "emacs" "emacs -nw"       # 开启一个窗口
+        tmux new-session -s $session -d -n "bash0"     # 开启一个会话
+        tmux new-window -t $session -n "bash1" "bash"       # 开启一个窗口
+        tmux new-window -t $session -n "bash2" "bash"       # 开启一个窗口
         tmux selectw -t $session:0
     fi
     tmux attach -t $session
