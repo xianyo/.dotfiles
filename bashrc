@@ -3,7 +3,7 @@
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
 
 # alias emacs
-alias emacsd='emacs --daemon'
+alias emacsd='nohup emacs --daemon &'
 alias e='emacsclient -t'
 alias ec='emacsclient -c'
 alias es='emacs -nw'
