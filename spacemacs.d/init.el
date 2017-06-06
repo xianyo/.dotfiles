@@ -315,7 +315,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'trailing
    ))
 
 (defun dotspacemacs/user-init ()
@@ -336,7 +336,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
     ;; https://github.com/syl20bnr/spacemacs/issues/2705
     ;; (setq tramp-mode nil)
     (setq tramp-ssh-controlmaster-options
-          "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no") 
+          "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   )
 
 (defun dotspacemacs/user-config ()
@@ -347,7 +347,7 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-    ;; (setq 
+    ;; (setq
     ;;  eclim-eclipse-dirs "~/soft/eclipse"
     ;;  eclim-executable "~/soft/eclipse/eclim"
     ;;  ;; Specify the workspace to use by default
@@ -362,6 +362,7 @@ you should place your code here."
     ;; (setq neo-persist-show t)               ;; C-x 1 时neotree window不关闭
     ;; (setq split-window-preferred-function 'neotree-split-window-sensibly)
 
+    (remove-hook 'find-file-hooks 'vc-find-file-hook)
     (setq vc-handled-backends ())
     (setq powerline-default-separator nil)
     (setq projectile-enable-caching t)
@@ -394,7 +395,7 @@ you should place your code here."
     ;;                               (old-default-directory default-directory))
     ;;                           (projectile-switch-project-by-name project)
     ;;                           (setq default-directory old-default-directory))))))
-    
+
     ;; http://hugoheden.wordpress.com/2009/03/08/copypaste-with-emacs-in-terminal/
     ;; I prefer using the "clipboard" selection (the one the
     ;; typically is used by c-c/c-v) before the primary selection
@@ -508,6 +509,29 @@ you should place your code here."
 
     (spacemacs/set-leader-keys "fl" 'projectile-find-file-in-directory)
 
+    ;;add auto format paste code
+    (dolist (command '(yank yank-pop))
+      (eval
+       `(defadvice ,command (after indent-region activate)
+          (and (not current-prefix-arg)
+               (member major-mode
+                       '(emacs-lisp-mode
+                         lisp-mode
+                         clojure-mode
+                         scheme-mode
+                         haskell-mode
+                         ruby-mode
+                         rspec-mode
+                         python-mode
+                         c-mode
+                         c++-mode
+                         objc-mode
+                         latex-mode
+                         js-mode
+                         plain-tex-mode))
+               (let ((mark-even-if-inactive transient-mark-mode))
+                 (indent-region (region-beginning) (region-end) nil))))))
+
     ;; ---禁止备份
     (setq make-backup-files nil)
 
@@ -519,12 +543,16 @@ you should place your code here."
     (global-set-key (kbd "C-SPC") nil)
     (global-set-key (kbd "C-C SPC") 'set-mark-command)
 
-    (global-set-key (kbd "C-x C-z") 'kill-emacs) 
+    (global-set-key (kbd "C-x C-z") 'kill-emacs)
     (define-key evil-motion-state-map (kbd "C-x C-z") 'evil-emacs-state)
     (define-key evil-motion-state-map (kbd "C-z") 'suspend-frame)
 
     (define-key evil-normal-state-map (kbd "<down-mouse-1>") 'evil-insert)
 
+    (setq-default c-basic-offset 4
+                  tab-width 4
+                  indent-tabs-mode t)
+    (setq c-default-style "linux")
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
