@@ -559,6 +559,9 @@ you should place your code here."
                   tab-width 4
                   indent-tabs-mode t)
     (setq c-default-style "linux")
+
+	(setq spacemacs-show-trailing-whitespace nil)
+
 )
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
