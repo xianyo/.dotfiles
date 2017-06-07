@@ -315,7 +315,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'changed
    ))
 
 (defun dotspacemacs/user-init ()
@@ -538,7 +538,6 @@ you should place your code here."
     ;; 不生成临时文件
     (setq-default make-backup-files nil)
 
-    (spacemacs/set-leader-keys "jh" 'evil-jump-forward)
 
     (global-set-key (kbd "C-SPC") nil)
     (global-set-key (kbd "C-C SPC") 'set-mark-command)
@@ -547,7 +546,12 @@ you should place your code here."
     (define-key evil-motion-state-map (kbd "C-x C-z") 'evil-emacs-state)
     (define-key evil-motion-state-map (kbd "C-z") 'suspend-frame)
 
+    (define-key evil-normal-state-map (kbd "go") 'evil-jump-forward)
+
     (define-key evil-normal-state-map (kbd "<down-mouse-1>") 'evil-insert)
+
+	;; evilnc-comment-operator
+    (define-key evil-normal-state-map (kbd "gc") 'spacemacs/comment-or-uncomment-lines)
 
     (setq-default c-basic-offset 4
                   tab-width 4
