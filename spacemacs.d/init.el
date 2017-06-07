@@ -367,18 +367,18 @@ you should place your code here."
     (setq powerline-default-separator nil)
     (setq projectile-enable-caching t)
 
-    ;; (global-set-key (kbd "<backtab>") 'un-indent-by-removing-4-spaces)
-    ;; (defun un-indent-by-removing-4-spaces ()
-    ;;   "remove 4 spaces from beginning of of line"
-    ;;   (interactive)
-    ;;   (save-excursion
-    ;;     (save-match-data
-    ;;       (beginning-of-line)
-    ;;       ;; get rid of tabs at beginning of line
-    ;;       (when (looking-at "^\\s-+")
-    ;;         (untabify (match-beginning 0) (match-end 0)))
-    ;;       (when (looking-at (concat "^" (make-string tab-width ?\ )))
-    ;;         (replace-match "")))))
+    (global-set-key (kbd "<backtab>") 'un-indent-by-removing-4-spaces)
+    (defun un-indent-by-removing-4-spaces ()
+      "remove 4 spaces from beginning of of line"
+      (interactive)
+      (save-excursion
+        (save-match-data
+          (beginning-of-line)
+          ;; get rid of tabs at beginning of line
+          (when (looking-at "^\\s-+")
+            (untabify (match-beginning 0) (match-end 0)))
+          (when (looking-at (concat "^" (make-string tab-width ?\ )))
+            (replace-match "")))))
 
     ;; https://github.com/syl20bnr/spacemacs/issues/7749
     ;; (defun spacemacs/ivy-persp-switch-project (arg)
@@ -504,10 +504,6 @@ you should place your code here."
     ;;(gpm-mouse-mode -1)
     ;;(xterm-mouse-mode -1)
 
-    ;; Bind clang-format-region to C-M-tab in all modes:
-    (global-set-key [C-M-tab] 'clang-format-region)
-
-    (spacemacs/set-leader-keys "fl" 'projectile-find-file-in-directory)
 
     ;;add auto format paste code
     (dolist (command '(yank yank-pop))
@@ -538,20 +534,26 @@ you should place your code here."
     ;; 不生成临时文件
     (setq-default make-backup-files nil)
 
+    ;; Bind clang-format-region to C-M-tab in all modes:
+    (global-set-key [C-M-tab] 'clang-format-region)
+
+    (spacemacs/set-leader-keys "fl" 'projectile-find-file-in-directory)
 
     (global-set-key (kbd "C-SPC") nil)
     (global-set-key (kbd "C-C SPC") 'set-mark-command)
 
-    (global-set-key (kbd "C-x C-z") 'kill-emacs)
-    (define-key evil-motion-state-map (kbd "C-x C-z") 'evil-emacs-state)
-    (define-key evil-motion-state-map (kbd "C-z") 'suspend-frame)
+	(global-set-key (kbd "C-x C-z") 'kill-emacs)
+	(define-key evil-motion-state-map (kbd "C-x C-z") 'evil-emacs-state)
+	(define-key evil-motion-state-map (kbd "C-z") 'suspend-frame)
 
-    (define-key evil-normal-state-map (kbd "go") 'evil-jump-forward)
-
-    (define-key evil-normal-state-map (kbd "<down-mouse-1>") 'evil-insert)
+	(define-key evil-normal-state-map (kbd "<down-mouse-1>") 'evil-insert)
 
 	;; evilnc-comment-operator
+    (define-key evil-normal-state-map (kbd "go") 'evil-jump-forward)
     (define-key evil-normal-state-map (kbd "gc") 'spacemacs/comment-or-uncomment-lines)
+    (define-key evil-normal-state-map (kbd "gj") 'spacemacs/evil-insert-line-below)
+    (define-key evil-normal-state-map (kbd "gk") 'spacemacs/evil-insert-line-above)
+    (define-key evil-normal-state-map (kbd "gh") 'clang-format-region)
 
     (setq-default c-basic-offset 4
                   tab-width 4
@@ -559,39 +561,11 @@ you should place your code here."
     (setq c-default-style "linux")
 )
 
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (package-build spacemacs-theme))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
+(load custom-file 'no-error 'no-message)
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (xterm-color vmd-mode spaceline powerline shell-pop popwin neotree multi-term mmm-mode markdown-toc markdown-mode hl-todo helm-company helm-c-yasnippet golden-ratio gh-md fuzzy fill-column-indicator fancy-battery eshell-z eshell-prompt-extras esh-help company-statistics company-shell company-emacs-eclim company-c-headers auto-yasnippet ac-ispell auto-complete stickyfunc-enhance srefactor package-build spacemacs-theme)))
- '(safe-local-variable-values (quote ((org-image-actual-width quote (500))))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
 )
