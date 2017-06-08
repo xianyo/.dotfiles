@@ -362,6 +362,8 @@ you should place your code here."
     ;; (setq neo-persist-show t)               ;; C-x 1 时neotree window不关闭
     ;; (setq split-window-preferred-function 'neotree-split-window-sensibly)
 
+    (setq-default evil-escape-delay 0.2)
+    (setq-default evil-escape-key-sequence "jk")
     (remove-hook 'find-file-hooks 'vc-find-file-hook)
     (setq vc-handled-backends ())
     (setq powerline-default-separator nil)
@@ -553,7 +555,7 @@ you should place your code here."
     (define-key evil-normal-state-map (kbd "gc") 'spacemacs/comment-or-uncomment-lines)
     (define-key evil-normal-state-map (kbd "gj") 'spacemacs/evil-insert-line-below)
     (define-key evil-normal-state-map (kbd "gk") 'spacemacs/evil-insert-line-above)
-    (define-key evil-normal-state-map (kbd "gh") 'clang-format-region)
+    (define-key evil-normal-state-map (kbd "gh") 'helm-filtered-bookmarks)
 
     (setq-default c-basic-offset 4
                   tab-width 4
