@@ -553,9 +553,13 @@ you should place your code here."
 	;; evilnc-comment-operator
     (define-key evil-normal-state-map (kbd "go") 'evil-jump-forward)
     (define-key evil-normal-state-map (kbd "gc") 'spacemacs/comment-or-uncomment-lines)
-    (define-key evil-normal-state-map (kbd "gj") 'spacemacs/evil-insert-line-below)
+    (define-key evil-normal-state-map (kbd "gr") 'helm-resume)
+    (define-key evil-normal-state-map (kbd "gb") 'helm-mini)
+
+	(define-key evil-normal-state-map (kbd "gj") 'spacemacs/evil-insert-line-below)
     (define-key evil-normal-state-map (kbd "gk") 'spacemacs/evil-insert-line-above)
     (define-key evil-normal-state-map (kbd "gh") 'helm-filtered-bookmarks)
+    (define-key evil-normal-state-map (kbd "gl") 'kill-this-buffer)
 
     (setq-default c-basic-offset 4
                   tab-width 4
@@ -564,6 +568,10 @@ you should place your code here."
 
 	(setq spacemacs-show-trailing-whitespace nil)
 
+	(global-set-key (kbd "C-j") 'next-line)
+	(global-set-key (kbd "C-k") 'previous-line)
+	(global-set-key (kbd "C-h") 'backward-char)
+	(global-set-key (kbd "C-l") 'forward-char)
 )
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
