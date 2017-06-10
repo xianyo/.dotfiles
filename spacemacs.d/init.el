@@ -61,7 +61,7 @@ values."
              shell-default-height 50
              shell-default-shell 'multi-term
              shell-default-term-shell "/bin/bash"
-             shell-default-position 'right)
+             shell-default-position 'full)
      ;; (spell-checking :variables spell-checking-enable-by-default nil)
      ;; syntax-checking
      ;;version-control
@@ -362,7 +362,7 @@ you should place your code here."
     ;; (setq neo-persist-show t)               ;; C-x 1 时neotree window不关闭
     ;; (setq split-window-preferred-function 'neotree-split-window-sensibly)
 
-    (setq-default evil-escape-delay 0.2)
+    (setq-default evil-escape-delay 0.3)
     (setq-default evil-escape-key-sequence "jk")
     (remove-hook 'find-file-hooks 'vc-find-file-hook)
     (setq vc-handled-backends ())
@@ -556,14 +556,18 @@ you should place your code here."
     (define-key evil-normal-state-map (kbd "gr") 'helm-resume)
     (define-key evil-normal-state-map (kbd "gb") 'helm-mini)
 
-	(define-key evil-normal-state-map (kbd "gj") 'spacemacs/evil-insert-line-below)
-    (define-key evil-normal-state-map (kbd "gk") 'spacemacs/evil-insert-line-above)
+	(define-key evil-normal-state-map (kbd "gj") 'evil-avy-goto-line)
+    (define-key evil-normal-state-map (kbd "gk") 'kill-this-buffer)
     (define-key evil-normal-state-map (kbd "gh") 'helm-filtered-bookmarks)
-    (define-key evil-normal-state-map (kbd "gl") 'kill-this-buffer)
+    (define-key evil-normal-state-map (kbd "gl") 'projectile-find-file-in-directory)
+
+    (define-key evil-normal-state-map (kbd "gp") 'helm-show-kill-ring)
+    (define-key evil-normal-state-map (kbd "gs") 'save-buffer)
+    (define-key evil-normal-state-map (kbd "gt") 'helm-find-files)
 
     (setq-default c-basic-offset 4
                   tab-width 4
-                  indent-tabs-mode t)
+                  indent-tabs-mode nil)
     (setq c-default-style "linux")
 
 	(setq spacemacs-show-trailing-whitespace nil)
@@ -572,6 +576,32 @@ you should place your code here."
 	(global-set-key (kbd "C-k") 'previous-line)
 	(global-set-key (kbd "C-h") 'backward-char)
 	(global-set-key (kbd "C-l") 'forward-char)
+
+	(defun evil-paste-after-from-0 ()
+	  (interactive)
+	  (let ((evil-this-register ?0))
+		(call-interactively 'evil-paste-after)))
+
+	(define-key evil-visual-state-map "p" 'evil-paste-after-from-0)
+
+	;; search in directory on RET by default (instead of opening dired)
+	(require 'helm)
+	(defun helm-find-files-navigate-forward (orig-fun &rest args)
+	  (if (file-directory-p (helm-get-selection))
+		  (apply orig-fun args)
+		(helm-maybe-exit-minibuffer)))
+	(advice-add 'helm-execute-persistent-action :around #'helm-find-files-navigate-forward)
+	(define-key helm-find-files-map (kbd "RET") 'helm-execute-persistent-action)
+
+	;; backspace goes one dir up
+	(defun helm-find-files-navigate-back (orig-fun &rest args)
+	  (if (= (length helm-pattern) (length (helm-find-files-initial-input)))
+		  (helm-find-files-up-one-level 1)
+		(apply orig-fun args)))
+	(advice-add 'helm-ff-delete-char-backward :around #'helm-find-files-navigate-back)
+
+	(setq user-full-name "zhuxy")
+	(setq user-mail-address "zhuxyo@gmail.com")
 )
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
