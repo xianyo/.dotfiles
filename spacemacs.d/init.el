@@ -673,7 +673,7 @@ you should place your code here."
       (local-set-key (kbd "TAB") 'abs-indent)
       ;; S-TAB not work when in visual mode
       ;; (local-set-key (kbd "S-TAB") 'abs-unindent)
-      (local-set-key (kbd "C-c i") 'abs-unindent)
+      (local-set-key (kbd "M-I") 'abs-unindent)
       )
 
     ;; to used it
@@ -683,7 +683,7 @@ you should place your code here."
     (global-set-key (kbd "M-i") 'abs-indent)
     ;; S-TAB not work when in visual mode
     ;; (global-set-key (kbd "S-TAB") 'abs-unindent)
-    (global-set-key (kbd "C-c i") 'abs-unindent)
+    (global-set-key (kbd "M-I") 'abs-unindent)
 
 )
 
