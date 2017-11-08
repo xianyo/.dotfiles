@@ -30,7 +30,8 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(php
+     python
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -77,13 +78,12 @@ values."
      (markdown :variables
                 markdown-live-preview-engine 'vmd)
      gtags
-     (han :variables
-            han-enable-youdao-dict t
-            han-enable-fcitx nil
-            han-org-line-spacing 0.2)
-     ;; (chinese :packages youdao-dictionary fcitx
-     ;;          :variables chinese-enable-fcitx t
-     ;;          chinese-enable-youdao-dict t)
+     ;; (han :variables
+     ;;        han-enable-youdao-dict t
+     ;;        han-enable-fcitx nil
+     ;;        han-org-line-spacing 0.2)
+     (chinese :variables chinese-enable-fcitx t
+              chinese-enable-youdao-dict t)
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -684,6 +684,33 @@ you should place your code here."
     ;; S-TAB not work when in visual mode
     ;; (global-set-key (kbd "S-TAB") 'abs-unindent)
     (global-set-key (kbd "M-I") 'abs-unindent)
+
+
+    (evil-leader/set-key "d" 'avy-goto-char-in-line)
+    (spacemacs/declare-prefix "o" "Chinese")
+    (evil-leader/set-key "od" 'find-by-pinyin-dired)
+    (evil-leader/set-key "oy" 'youdao-dictionary-search-at-point+)
+    (evil-leader/set-key "ol" 'org-cliplink)
+    (evil-leader/set-key "oc" 'avy-goto-char)
+    (evil-leader/set-key "ow" 'avy-goto-char-2)
+
+    ;; (fcitx-aggressive-setup)
+    (global-set-key (kbd "C-\\") 'toggle-input-method)
+    (setq default-input-method "pyim")
+    (setq pyim-default-scheme 'quanpin)
+
+    ;; 开启拼音搜索功能
+    ;; (setq pyim-isearch-mode t)
+
+    ;; 使用 pupup-el 来绘制选词框
+    (setq pyim-page-tooltip 'popup)
+
+    ;; 选词框显示5个候选词
+    (setq pyim-page-length 5)
+
+    ;; 让 Emacs 启动时自动加载 pyim 词库
+    (add-hook 'emacs-startup-hook
+              #'(lambda () (pyim-restart-1 t)))
 
 )
 
