@@ -21,28 +21,28 @@ echo
 echo "Setting up files"
 mv $HOME/.vim $HOME/.vim_bak >&/dev/null
 mv $HOME/.vimrc $HOME/.vimrc_bak >&/dev/null
-lnif $CURRENT_DIR/vim/vimrc $HOME/.vimrc
+lnif $CURRENT_DIR/vim/minivimrc $HOME/.vimrc
 lnif $CURRENT_DIR/vim $HOME/.vim
 lnif $CURRENT_DIR/tmux.conf  $HOME/.tmux.conf
 
-echo "Install vundle"
-if [ ! -e $CURRENT_DIR/vim/bundle/vundle ]; then
-    echo "Installing vim vundle"
-    git clone https://github.com/gmarik/vundle.git $CURRENT_DIR/vim/bundle/vundle
-else
-    echo "Upgrade vim vundle"
-    cd "$HOME/.vim/bundle/vundle" && git pull origin master
-fi
+# echo "Install vundle"
+# if [ ! -e $CURRENT_DIR/vim/bundle/vundle ]; then
+#     echo "Installing vim vundle"
+#     git clone https://github.com/gmarik/vundle.git $CURRENT_DIR/vim/bundle/vundle
+# else
+#     echo "Upgrade vim vundle"
+#     cd "$HOME/.vim/bundle/vundle" && git pull origin master
+# fi
 
-echo "Update/Install vim plugins using Vundle"
-system_shell=$SHELL
-export SHELL="/bin/sh"
-echo "installing ...." > xianyovim
-echo "sucess auto exit" >> xianyovim
-echo "please wait" >> xianyovim
-vim xianyovim +BundleInstall! +BundleClean +qall
-rm xianyovim
-export SHELL=$system_shell
+# echo "Update/Install vim plugins using Vundle"
+# system_shell=$SHELL
+# export SHELL="/bin/sh"
+# echo "installing ...." > xianyovim
+# echo "sucess auto exit" >> xianyovim
+# echo "please wait" >> xianyovim
+# vim xianyovim +BundleInstall! +BundleClean +qall
+# rm xianyovim
+# export SHELL=$system_shell
 
 #vim bk and undo dir
 if [ ! -d /tmp/vimbk ]
