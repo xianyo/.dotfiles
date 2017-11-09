@@ -30,8 +30,7 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(php
-     python
+   '(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -66,10 +65,10 @@ values."
      ;; (spell-checking :variables spell-checking-enable-by-default nil)
      ;; syntax-checking
      ;;version-control
-     fasd
+     ;;fasd
      shell-scripts
      (java :variables java-backend nil)
-     semantic
+     ;; semantic
      c-c++
      ;; python
      ;; php
@@ -78,6 +77,7 @@ values."
      (markdown :variables
                 markdown-live-preview-engine 'vmd)
      gtags
+     treemacs
      ;; (han :variables
      ;;        han-enable-youdao-dict t
      ;;        han-enable-fcitx nil
