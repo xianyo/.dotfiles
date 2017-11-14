@@ -88,7 +88,8 @@ setjdk jdk8
 #android
 if [ -d ${HOME}/soft/Android/sdk ]; then
     export ANDROID_SDK_HOME=${HOME}/soft/Android/sdk
-    export NDK_HOME=${ANDROID_SDK_HOME}/ndk-bundle
+    export ANDROID_HOME=${HOME}/soft/Android/sdk
+    export ANDROID_NDK_HOME=${ANDROID_SDK_HOME}/ndk-bundle
     export PATH=${ANDROID_SDK_HOME}/platform-tools:${ANDROID_SDK_HOME}/tools:${NDK_HOME}:$PATH
 fi
 
