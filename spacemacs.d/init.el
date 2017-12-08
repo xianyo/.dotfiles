@@ -68,7 +68,7 @@ values."
      ;;fasd
      shell-scripts
      (java :variables java-backend nil)
-     ;; semantic
+     semantic
      c-c++
      ;; python
      ;; php
