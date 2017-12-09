@@ -93,7 +93,7 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(company)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -402,7 +402,10 @@ you should place your code here."
     ;; I prefer using the "clipboard" selection (the one the
     ;; typically is used by c-c/c-v) before the primary selection
     ;; (that uses mouse-select/middle-button-click)
-    (setq x-select-enable-clipboard t)
+
+    (if (version<= emacs-version "24.5")
+        (setq x-select-enable-clipboard t)     ;; copy and paste with other program
+      (setq select-enable-clipboard t))        ;; 25.1 版本改成这个变量了
 
     ;; If emacs is run in a terminal, the clipboard- functions have no
     ;; effect. Instead, we use of xsel, see
@@ -732,6 +735,8 @@ you should place your code here."
 
     ;; (global-set-key (kbd "M-i") 'pyim-convert-code-at-point)
 
+    (ac-config-default)
+    (setq ac-auto-start 4)
 )
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
