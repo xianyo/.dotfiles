@@ -136,7 +136,10 @@ values."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'hybrid
+   dotspacemacs-editing-style '(hybrid :variables
+                                        hybrid-mode-enable-evilified-state t
+                                        hybrid-mode-enable-hjkl-bindings t
+                                        hybrid-mode-default-state 'normal)
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -229,7 +232,7 @@ values."
    dotspacemacs-helm-resize nil
    ;; if non nil, the helm header is hidden when there is only one source.
    ;; (default nil)
-   dotspacemacs-helm-no-header nil
+   dotspacemacs-helm-no-header t
    ;; define the position to display `helm', options are `bottom', `top',
    ;; `left', or `right'. (default 'bottom)
    dotspacemacs-helm-position 'bottom
@@ -575,10 +578,10 @@ you should place your code here."
 
 	(setq spacemacs-show-trailing-whitespace nil)
 
-	(global-set-key (kbd "C-j") 'next-line)
-	(global-set-key (kbd "C-k") 'previous-line)
-	(global-set-key (kbd "C-h") 'backward-char)
-	(global-set-key (kbd "C-l") 'forward-char)
+	;; (global-set-key (kbd "C-j") 'next-line)
+	;; (global-set-key (kbd "C-k") 'previous-line)
+	;; (global-set-key (kbd "C-h") 'backward-char)
+	;; (global-set-key (kbd "C-l") 'forward-char)
 
 	(defun evil-paste-after-from-0 ()
 	  (interactive)
