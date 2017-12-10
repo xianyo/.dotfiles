@@ -18,6 +18,8 @@ alias fe='a -e "emacsclient -t"'
 alias fv='a -e vim' 
 alias o='a -e xdg-open'
 
+export EDITOR='emacsclient -nw'
+
 # run emacs daemon
 [[ -z $(ps -C 'emacs --daemon' -o pid=) ]] && emacsd >&/dev/null
  

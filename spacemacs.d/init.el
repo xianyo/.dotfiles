@@ -533,6 +533,8 @@ you should place your code here."
                (let ((mark-even-if-inactive transient-mark-mode))
                  (indent-region (region-beginning) (region-end) nil))))))
 
+    (setq create-lockfiles nil)
+
     ;; ---禁止备份
     (setq make-backup-files nil)
 
