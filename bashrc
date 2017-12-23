@@ -92,12 +92,17 @@ if [ -d ${HOME}/soft/Android/sdk ]; then
     export ANDROID_SDK_HOME=${HOME}/soft/Android/sdk
     export ANDROID_HOME=${HOME}/soft/Android/sdk
     export ANDROID_NDK_HOME=${ANDROID_SDK_HOME}/ndk-bundle
-    export PATH=${ANDROID_SDK_HOME}/platform-tools:${ANDROID_SDK_HOME}/tools:${NDK_HOME}:$PATH
+    export PATH=${ANDROID_SDK_HOME}/platform-tools:${ANDROID_SDK_HOME}/tools:${ANDROID_NDK_HOME}:$PATH
 fi
 
 #emacs
 if [ -d ${HOME}/soft/emacs/bin ]; then
     export PATH=${HOME}/soft/emacs/bin:$PATH
+fi
+
+#gradle
+if [ -d ${HOME}/soft/gradle/bin ]; then
+    export PATH=${HOME}/soft/gradle/bin:$PATH
 fi
 
 export TERM=xterm-256color                                                               
@@ -117,6 +122,16 @@ function setkeyswap(){
 
 function setkeyunswap(){
     xmodmap $HOME/.dotfiles/Xmodmap_or
+}
+
+function mygitconfig(){
+         git config --global user.name "zhuxy"
+         git config --global user.email "zhuxyo@163.com"
+}
+
+function mypaxgitconfig(){
+         git config --global user.name "zhuxy"
+         git config --global user.email "zhuxy@paxsz.com"
 }
 
 function settackpoint(){
