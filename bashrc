@@ -124,30 +124,37 @@ function setkeyunswap(){
     xmodmap $HOME/.dotfiles/Xmodmap_or
 }
 
-function mygitconfig(){
-         git config --global diff.tool ediff
-         git config --global difftool.ediff.trustExitCode false
-         git config --global difftool.ediff.cmd "ediff \"\$LOCAL\" \"\$REMOTE\""
-         git config --global difftool.prompt false
-         git config --global merge.tool ediff
-         git config --global mergetool.ediff.trustExitCode false
-         git config --global mergetool.ediff.cmd "emacsclient -a "" -t --eval \"(git-mergetool-emacsclient-ediff \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" \\\"$MERGED\\\")\""
-         git config --global mergetool.prompt false
-         git config --global user.name "zhuxy"
-         git config --global user.email "zhuxyo@163.com"
-}
-
 function mypaxgitconfig(){
-         git config --global diff.tool ediff
-         git config --global difftool.ediff.trustExitCode fasle
-         git config --global difftool.ediff.cmd "ediff \"\$LOCAL\" \"\$REMOTE\""
-         git config --global difftool.prompt false
-         git config --global merge.tool ediff
-         git config --global mergetool.ediff.trustExitCode false
-         git config --global mergetool.ediff.cmd "emacsclient -a "" -t --eval \"(git-mergetool-emacsclient-ediff \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" \\\"$MERGED\\\")\""
-         git config --global mergetool.prompt false
          git config --global user.name "zhuxy"
          git config --global user.email "zhuxy@paxsz.com"
+}
+
+function mygitconfig(){
+          git config --global gui.encoding utf-8
+          git config --global i18n.commitencoding utf-8
+          git config --global svn.pathnameencoding utf-8
+          git config --global http.postbuffer 524288000
+          git config --global http.sslverify false
+          git config --global core.quotepath false
+          git config --global core.filemode false
+          git config --global color.ui true
+          git config --global alias.st status
+          git config --global alias.ci "commit -s"
+          git config --global alias.co checkout
+          git config --global alias.br branch
+          git config --global alias.ll "log --pretty=fuller --stat --graph --decorate"
+          git config --global alias.ls "log --pretty=oneline --graph --decorate"
+          git config --global alias.ss "status -sb"
+          git config --global diff.tool ediff
+          git config --global difftool.ediff.trustExitCode fasle
+          git config --global difftool.ediff.cmd "ediff \"\$LOCAL\" \"\$REMOTE\""
+          git config --global difftool.prompt false
+          git config --global merge.tool ediff
+          git config --global mergetool.ediff.trustExitCode false
+          git config --global mergetool.ediff.cmd "emacsclient -a "" -t --eval \"(git-mergetool-emacsclient-ediff \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" \\\"$MERGED\\\")\""
+          git config --global mergetool.prompt false
+          git config --global user.name "zhuxy"
+          git config --global user.email "zhuxyo@163.com"
 }
 
 function settackpoint(){
