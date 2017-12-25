@@ -125,11 +125,27 @@ function setkeyunswap(){
 }
 
 function mygitconfig(){
+         git config --global diff.tool ediff
+         git config --global difftool.ediff.trustExitCode false
+         git config --global difftool.ediff.cmd "ediff \"\$LOCAL\" \"\$REMOTE\""
+         git config --global difftool.prompt false
+         git config --global merge.tool ediff
+         git config --global mergetool.ediff.trustExitCode false
+         git config --global mergetool.ediff.cmd "emacsclient -a "" -t --eval \"(git-mergetool-emacsclient-ediff \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" \\\"$MERGED\\\")\""
+         git config --global mergetool.prompt false
          git config --global user.name "zhuxy"
          git config --global user.email "zhuxyo@163.com"
 }
 
 function mypaxgitconfig(){
+         git config --global diff.tool ediff
+         git config --global difftool.ediff.trustExitCode fasle
+         git config --global difftool.ediff.cmd "ediff \"\$LOCAL\" \"\$REMOTE\""
+         git config --global difftool.prompt false
+         git config --global merge.tool ediff
+         git config --global mergetool.ediff.trustExitCode false
+         git config --global mergetool.ediff.cmd "emacsclient -a "" -t --eval \"(git-mergetool-emacsclient-ediff \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" \\\"$MERGED\\\")\""
+         git config --global mergetool.prompt false
          git config --global user.name "zhuxy"
          git config --global user.email "zhuxy@paxsz.com"
 }
@@ -225,8 +241,11 @@ tmuxpax()
         tmux new-window -t $session -n "pd2" "ssh pd"       # 开启一个窗口
         tmux new-window -t $session -n "pd3" "ssh pd"       # 开启一个窗口
         tmux new-window -t $session -n "pd4" "ssh pd"       # 开启一个窗口
-        tmux new-window -t $session -n "bu2_1" "ssh bu2"              # 开启一个窗口
-        tmux new-window -t $session -n "bu2_2" "ssh bu2"              # 开启一个窗口
+        tmux new-window -t $session -n "bu21" "ssh bu2"              # 开启一个窗口
+        tmux new-window -t $session -n "bu22" "ssh bu2"              # 开启一个窗口
+        tmux new-window -t $session -n "server" "ssh server"              # 开启一个窗口
+        tmux new-window -t $session -n "bash1" "bash"              # 开启一个窗口
+        tmux new-window -t $session -n "bash2" "bash"              # 开启一个窗口
         tmux selectw -t $session:0
     fi
     tmux attach -t $session
