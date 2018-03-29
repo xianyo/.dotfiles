@@ -244,15 +244,15 @@ tmuxpax()
     if [ $? != 0 ];then
         echo "new $session"
         tmux new-session -s $session -d -n "bash"     # 开启一个会话
-        tmux new-window -t $session -n "pd1" "ssh pd"       # 开启一个窗口
-        tmux new-window -t $session -n "pd2" "ssh pd"       # 开启一个窗口
-        tmux new-window -t $session -n "pd3" "ssh pd"       # 开启一个窗口
-        tmux new-window -t $session -n "pd4" "ssh pd"       # 开启一个窗口
-        tmux new-window -t $session -n "bu21" "ssh bu2"              # 开启一个窗口
-        tmux new-window -t $session -n "bu22" "ssh bu2"              # 开启一个窗口
-        tmux new-window -t $session -n "server" "ssh server"              # 开启一个窗口
+        tmux new-window -t $session -n "server1" "ssh server"              # 开启一个窗口
+        tmux new-window -t $session -n "server2" "ssh server"              # 开启一个窗口
+        tmux new-window -t $session -n "server3" "ssh server"              # 开启一个窗口
+        tmux new-window -t $session -n "server4" "ssh server"              # 开启一个窗口
+        tmux new-window -t $session -n "pd" "ssh pd"       # 开启一个窗口
+        tmux new-window -t $session -n "bu2" "ssh bu2"              # 开启一个窗口
         tmux new-window -t $session -n "bash1" "bash"              # 开启一个窗口
         tmux new-window -t $session -n "bash2" "bash"              # 开启一个窗口
+        tmux new-window -t $session -n "bash3" "bash"              # 开启一个窗口
         tmux selectw -t $session:0
     fi
     tmux attach -t $session

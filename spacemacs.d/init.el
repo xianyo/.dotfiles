@@ -30,7 +30,7 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(python
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -53,7 +53,7 @@ values."
      ;;search-engine
      ;;(ibuffer :variables ibuffer-group-buffers-by 'projects)
      ;;ranger
-     ;;git
+     ;; git
      ;; latex
      ;; restructuredtext
      ;; org
@@ -64,7 +64,7 @@ values."
              shell-default-position 'full)
      ;; (spell-checking :variables spell-checking-enable-by-default nil)
      ;; syntax-checking
-     ;;version-control
+     ;; version-control
      ;;fasd
      shell-scripts
      (java :variables java-backend nil)
@@ -331,7 +331,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
     (setq exec-path-from-shell-check-startup-files nil)
 
-    (setq configuration-layer--elpa-archives
+    (setq configuration-layer-elpa-archives
           '(("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
             ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
             ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
