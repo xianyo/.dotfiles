@@ -480,6 +480,51 @@ you should place your code here."
         (shell-command (concat "explorer.exe /e, \"$(cygpath -w \"" default-directory "\")\"")))
        ))
 
+    (defun vscode-explore ()
+      "Find the current buffer vscode"
+      (interactive)
+      (cond
+       ;; In buffers with file names
+       ((buffer-file-name)
+        (shell-command (concat "code " buffer-file-name)))
+       ;; In dired-mode
+       ((eq major-mode 'dired-mode)
+        (shell-command (concat "code " (dired-current-directory))))
+       ;; fallback to default-directory
+       (t
+        (shell-command (concat "code "  default-directory)))
+       ))
+
+    (defun vscode-dir ()
+      "open dir in vscode"
+      (interactive)
+      (cond
+       ;; In buffers with file names
+       ((buffer-file-name)
+        (shell-command (concat "code " (file-name-directory (buffer-file-name)))))
+       ;; In dired-mode
+       ((eq major-mode 'dired-mode)
+        (shell-command (concat "code " (dired-current-directory))))
+       ;; fallback to default-directory
+       (t
+        (shell-command (concat "code "  default-directory)))
+       ))
+
+    (defun explore-dir ()
+      "open dir in explore"
+      (interactive)
+      (cond
+       ;; In buffers with file names
+       ((buffer-file-name)
+        (shell-command (concat "explore " (file-name-directory (buffer-file-name)))))
+       ;; In dired-mode
+       ((eq major-mode 'dired-mode)
+        (shell-command (concat "explore " (dired-current-directory))))
+       ;; fallback to default-directory
+       (t
+        (shell-command (concat "explore "  default-directory)))
+       ))
+
     ;; dired just one buffer
     ;; (put 'dired-find-alternate-file 'disabled nil)
 
@@ -548,6 +593,9 @@ you should place your code here."
     (global-set-key [C-M-tab] 'clang-format-region)
 
     (spacemacs/set-leader-keys "fl" 'projectile-find-file-in-directory)
+    (spacemacs/set-leader-keys "fo" 'vscode-explore)
+    (spacemacs/set-leader-keys "fO" 'vscode-dir)
+    (spacemacs/set-leader-keys "fd" 'explore-dir)
 
     (global-set-key (kbd "C-SPC") nil)
     (global-set-key (kbd "C-c SPC") 'set-mark-command)
