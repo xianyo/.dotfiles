@@ -32,6 +32,39 @@ function kill-emacs(){
      fi
 }  
 
+function remote-subl(){
+         if [ -z $1 ];then
+            myrealpath=`realpath ./`
+         else
+            myrealpath=`realpath $1`
+         fi
+         mypath=${myrealpath/#"/home/zhuxy/"/"/home/zhuxy/server/"}
+         ssh -X zhuxy@172.16.151.191 "subl $mypath"
+}
+
+function remote-code(){
+         if [ -z $1 ];then
+            myrealpath=`realpath ./`
+         else
+            myrealpath=`realpath $1`
+         fi
+         mypath=${myrealpath/#"/home/zhuxy/"/"/home/zhuxy/server/"}
+         ssh -X zhuxy@172.16.151.191 "code $mypath"
+}
+
+function remote-explore(){
+         if [ -z $1 ];then
+            myrealpath=`realpath ./`
+         else
+            myrealpath=`realpath $1`
+         fi
+         mypath=${myrealpath/#"/home/zhuxy/"/"/home/zhuxy/server/"}
+         ssh -X zhuxy@172.16.151.191 "explore $mypath >&/dev/null"
+}
+
+[[ -z $(which code) ]] && alias code='remote-code'
+[[ -z $(which explore) ]] && alias explore='remote-explore'
+[[ -z $(which subl) ]] && alias subl='remote-subl'
 
 #java
 function setjdk(){
