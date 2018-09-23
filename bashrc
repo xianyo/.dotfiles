@@ -59,11 +59,21 @@ function remote-explore(){
             myrealpath=`realpath $1`
          fi
          mypath=${myrealpath/#"/home/zhuxy/"/"/home/zhuxy/server/"}
-         ssh -X zhuxy@172.16.151.191 "explore $mypath >&/dev/null"
+         ssh -X zhuxy@172.16.151.191 "dde-file-manager $mypath >&/dev/null"
+}
+
+function fdde(){
+         if [ -z $1 ];then
+            myrealpath=`realpath ./`
+         else
+            myrealpath=`realpath $1`
+         fi
+         nohup dde-file-manager $myrealpath >/dev/null 2>&1 &
 }
 
 [[ -z $(which code) ]] && alias code='remote-code'
-[[ -z $(which explore) ]] && alias explore='remote-explore'
+[[ -z $(which dde-file-manager) ]] && alias f='remote-explore'
+[[ -z $(which dde-file-manager) ]] || alias f='fdde'
 [[ -z $(which subl) ]] && alias subl='remote-subl'
 
 #java
