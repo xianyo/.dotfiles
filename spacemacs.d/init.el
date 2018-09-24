@@ -480,49 +480,64 @@ you should place your code here."
         (shell-command (concat "explorer.exe /e, \"$(cygpath -w \"" default-directory "\")\"")))
        ))
 
-    (defun vscode-explore ()
-      "Find the current buffer vscode"
+    (defun open-editor-file ()
+      "Find the current buffer editor"
       (interactive)
       (cond
        ;; In buffers with file names
        ((buffer-file-name)
-        (shell-command (concat "code " buffer-file-name)))
+        (shell-command (concat "subl " buffer-file-name)))
        ;; In dired-mode
        ((eq major-mode 'dired-mode)
-        (shell-command (concat "code " (dired-current-directory))))
+        (shell-command (concat "subl " (dired-current-directory))))
        ;; fallback to default-directory
        (t
-        (shell-command (concat "code "  default-directory)))
+        (shell-command (concat "subl "  default-directory)))
        ))
 
-    (defun vscode-dir ()
-      "open dir in vscode"
+    (defun open-editor-dir ()
+      "open dir in editor"
       (interactive)
       (cond
        ;; In buffers with file names
        ((buffer-file-name)
-        (shell-command (concat "code " (file-name-directory (buffer-file-name)))))
+        (shell-command (concat "subl " (file-name-directory (buffer-file-name)))))
        ;; In dired-mode
        ((eq major-mode 'dired-mode)
-        (shell-command (concat "code " (dired-current-directory))))
+        (shell-command (concat "subl " (dired-current-directory))))
        ;; fallback to default-directory
        (t
-        (shell-command (concat "code "  default-directory)))
+        (shell-command (concat "subl "  default-directory)))
        ))
 
-    (defun explore-dir ()
+    (defun open-file-dir ()
       "open dir in explore"
       (interactive)
       (cond
        ;; In buffers with file names
        ((buffer-file-name)
-        (shell-command (concat "explore " (file-name-directory (buffer-file-name)))))
+        (shell-command (concat "f " (file-name-directory (buffer-file-name)))))
        ;; In dired-mode
        ((eq major-mode 'dired-mode)
-        (shell-command (concat "explore " (dired-current-directory))))
+        (shell-command (concat "f " (dired-current-directory))))
        ;; fallback to default-directory
        (t
-        (shell-command (concat "explore "  default-directory)))
+        (shell-command (concat "f "  default-directory)))
+       ))
+
+    (defun open-terminal-dir ()
+      "open dir in terminal"
+      (interactive)
+      (cond
+       ;; In buffers with file names
+       ((buffer-file-name)
+        (shell-command (concat "t " (file-name-directory (buffer-file-name)))))
+       ;; In dired-mode
+       ((eq major-mode 'dired-mode)
+        (shell-command (concat "t " (dired-current-directory))))
+       ;; fallback to default-directory
+       (t
+        (shell-command (concat "t "  default-directory)))
        ))
 
     ;; dired just one buffer
@@ -553,6 +568,7 @@ you should place your code here."
     (setq locale-coding-system 'utf-8)
     (prefer-coding-system 'gb18030)
     (prefer-coding-system 'utf-8)
+
 
     ;;(gpm-mouse-mode -1)
     ;;(xterm-mouse-mode -1)
@@ -593,9 +609,10 @@ you should place your code here."
     (global-set-key [C-M-tab] 'clang-format-region)
 
     (spacemacs/set-leader-keys "fl" 'projectile-find-file-in-directory)
-    (spacemacs/set-leader-keys "fo" 'vscode-explore)
-    (spacemacs/set-leader-keys "fO" 'vscode-dir)
-    (spacemacs/set-leader-keys "fd" 'explore-dir)
+    (spacemacs/set-leader-keys "fo" 'open-editor-file)
+    (spacemacs/set-leader-keys "fO" 'open-editor-dir)
+    (spacemacs/set-leader-keys "fd" 'open-file-dir)
+    (spacemacs/set-leader-keys "tt" 'open-terminal-dir)
 
     (global-set-key (kbd "C-SPC") nil)
     (global-set-key (kbd "C-c SPC") 'set-mark-command)

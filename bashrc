@@ -39,7 +39,11 @@ function remote-subl(){
             myrealpath=`realpath $1`
          fi
          mypath=${myrealpath/#"/home/zhuxy/"/"/home/zhuxy/server/"}
-         nohup ssh -X zhuxy@172.16.151.191 "subl $mypath" >&/dev/null
+         if [ -d $myrealpath ];then
+            ssh -X zhuxy@172.16.151.191 "sublime-text-dev -a $mypath"
+         else
+            ssh -X zhuxy@172.16.151.191 "sublime-text-dev $mypath"
+         fi
 }
 
 function remote-code(){
@@ -49,7 +53,7 @@ function remote-code(){
             myrealpath=`realpath $1`
          fi
          mypath=${myrealpath/#"/home/zhuxy/"/"/home/zhuxy/server/"}
-         nohup ssh -X zhuxy@172.16.151.191 "code" >&/dev/null
+         ssh -X zhuxy@172.16.151.191 "code"
 }
 
 function remote-explore(){
@@ -59,7 +63,26 @@ function remote-explore(){
             myrealpath=`realpath $1`
          fi
          mypath=${myrealpath/#"/home/zhuxy/"/"/home/zhuxy/server/"}
-         nohup ssh -X zhuxy@172.16.151.191 "dde-file-manager $mypath >&/dev/null" >&/dev/null
+         ssh -X zhuxy@172.16.151.191 "dde-file-manager $mypath >&/dev/null"
+}
+
+function remote-deepin-terminal(){
+         if [ -z $1 ];then
+            myrealpath=`realpath ./`
+         else
+            myrealpath=`realpath $1`
+         fi
+         mypath=${myrealpath/#"/home/zhuxy/"/"/home/zhuxy/server/"}
+         ssh -X zhuxy@172.16.151.191 "deepin-terminal -w $mypath >/dev/null 2>&1"
+}
+
+function tdde(){
+         if [ -z $1 ];then
+            myrealpath=`realpath ./`
+         else
+            myrealpath=`realpath $1`
+         fi
+         nohup deepin-terminal -w $myrealpath >/dev/null 2>&1 &
 }
 
 function fdde(){
@@ -71,10 +94,28 @@ function fdde(){
          nohup dde-file-manager $myrealpath >/dev/null 2>&1 &
 }
 
+function esubl(){
+         if [ -z $1 ];then
+            myrealpath=`realpath ./`
+         else
+            myrealpath=`realpath $1`
+         fi
+
+         if [ -d $myrealpath ];then
+            nohup /usr/bin/sublime-text-dev -w $myrealpath >/dev/null 2>&1 &
+         else
+            nohup /usr/bin/sublime-text-dev $myrealpath >/dev/null 2>&1 &
+         fi
+
+}
+
 [[ -z $(which code) ]] && alias code='remote-code'
 [[ -z $(which dde-file-manager) ]] && alias f='remote-explore'
 [[ -z $(which dde-file-manager) ]] || alias f='fdde'
-[[ -z $(which subl) ]] && alias subl='remote-subl'
+[[ -z $(which sublime-text-dev) ]] && alias subl='remote-subl'
+[[ -z $(which sublime-text-dev) ]] || alias subl='esubl'
+[[ -z $(which deepin-terminal) ]] && alias t='remote-deepin-terminal'
+[[ -z $(which deepin-terminal) ]] || alias t='tdde'
 
 #java
 function setjdk(){
