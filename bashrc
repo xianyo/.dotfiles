@@ -39,7 +39,7 @@ function remote-subl(){
             myrealpath=`realpath $1`
          fi
          mypath=${myrealpath/#"/home/zhuxy/"/"/home/zhuxy/server/"}
-         ssh -X zhuxy@172.16.151.191 "subl $mypath"
+         nohup ssh -X zhuxy@172.16.151.191 "subl $mypath" >&/dev/null
 }
 
 function remote-code(){
@@ -49,7 +49,7 @@ function remote-code(){
             myrealpath=`realpath $1`
          fi
          mypath=${myrealpath/#"/home/zhuxy/"/"/home/zhuxy/server/"}
-         ssh -X zhuxy@172.16.151.191 "code $mypath"
+         nohup ssh -X zhuxy@172.16.151.191 "code" >&/dev/null
 }
 
 function remote-explore(){
@@ -59,7 +59,7 @@ function remote-explore(){
             myrealpath=`realpath $1`
          fi
          mypath=${myrealpath/#"/home/zhuxy/"/"/home/zhuxy/server/"}
-         ssh -X zhuxy@172.16.151.191 "dde-file-manager $mypath >&/dev/null"
+         nohup ssh -X zhuxy@172.16.151.191 "dde-file-manager $mypath >&/dev/null" >&/dev/null
 }
 
 function fdde(){
