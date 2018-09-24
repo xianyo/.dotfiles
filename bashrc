@@ -102,7 +102,7 @@ function esubl(){
          fi
 
          if [ -d $myrealpath ];then
-            nohup /usr/bin/sublime-text-dev -w $myrealpath >/dev/null 2>&1 &
+            nohup /usr/bin/sublime-text-dev -a $myrealpath >/dev/null 2>&1 &
          else
             nohup /usr/bin/sublime-text-dev $myrealpath >/dev/null 2>&1 &
          fi
