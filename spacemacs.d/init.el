@@ -569,6 +569,12 @@ you should place your code here."
     (prefer-coding-system 'gb18030)
     (prefer-coding-system 'utf-8)
 
+    (setq shell-file-name "/bin/bash")
+
+    (defadvice shell-command (around use-bashrc activate)
+      "Load .bashrc in any calls to bash (e.g. so we can use aliases)"
+      (let ((shell-command-switch "-ic"))
+        ad-do-it))
 
     ;;(gpm-mouse-mode -1)
     ;;(xterm-mouse-mode -1)
