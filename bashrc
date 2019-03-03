@@ -179,6 +179,10 @@ if [ -d ${HOME}/soft/Android/sdk ]; then
     export PATH=${ANDROID_SDK_HOME}/platform-tools:${ANDROID_SDK_HOME}/tools:${ANDROID_NDK_HOME}:$PATH
 fi
 
+if [ -d ${HOME}/soft/Linux_Upgrade_Tool_1.27 ]; then
+    export PATH=${HOME}/soft/Linux_Upgrade_Tool_1.27:$PATH
+fi
+
 #emacs
 if [ -d ${HOME}/soft/emacs/bin ]; then
     export PATH=${HOME}/soft/emacs/bin:$PATH
