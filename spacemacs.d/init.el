@@ -30,7 +30,8 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(python
+   '(go
+     python
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -409,6 +410,9 @@ you should place your code here."
     (if (version<= emacs-version "24.5")
         (setq x-select-enable-clipboard t)     ;; copy and paste with other program
       (setq select-enable-clipboard t))        ;; 25.1 版本改成这个变量了
+
+
+    (setq x-select-enable-clipboard-manager nil)
 
     ;; If emacs is run in a terminal, the clipboard- functions have no
     ;; effect. Instead, we use of xsel, see
