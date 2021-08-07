@@ -78,7 +78,7 @@ echo "Install Spacemacs"
 if [ ! -f $HOME/.emacs.d/spacemacs.mk ]; then
     mv $HOME/.emacs.d $HOME/.emacs.d_bak >&/dev/null
     echo "Cloneing Spacemacs"
-    git clone git@github.com:syl20bnr/spacemacs ~/.emacs.d
+    git clone https://github.com/syl20bnr/spacemacs.git   ~/.emacs.d
     git checkout develop
 else
     echo "Upgrade Spacemacs"
