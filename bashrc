@@ -196,8 +196,8 @@ fi
 export TERM=xterm-256color                                                               
 export USE_CCACHE=1 
 
-if [ -d ${HOME}/hdd/.ccache ]; then
-    export CCACHE_DIR=~/hdd/.ccache
+if [ -d ${HOME}/.ccache ]; then
+    export CCACHE_DIR=~/.ccache
 fi
 
 function setccache(){
